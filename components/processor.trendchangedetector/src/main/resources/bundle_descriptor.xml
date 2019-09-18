@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<componentTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="bundle_model.xsd">
+
+    <componentType id="asterics.TrendChangeDetector"
+                   canonical_name="eu.asterics.component.processor.trendchangedetector.TrendChangeDetectorInstance">
+        <type subtype="Others">processor</type>
+        <singleton>false</singleton>
+        <description>Sends last output when a trend in a time series is detected</description>
+        <ports>
+			<inputPort id="input">
+				<description>Input time series</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+
+			<outputPort id="output">
+				<description>last value when change detected</description>
+				<dataType>double</dataType>
+			</outputPort>
+
+        </ports>
+		<events>
+
+
+		</events>			
+        <properties>
+			<property name="Trigger"
+				type="string"
+				value="less_than"
+				description="If current value [trigger] previous value, then output previous value"/>
+
+        </properties>
+
+    </componentType>
+</componentTypes>
