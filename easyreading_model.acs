@@ -1,0 +1,5198 @@
+<?xml version="1.0"?>
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_9_18_14_5" version="20130320">
+  <components>
+    <component id="TextArea.RRIntervallDoubleFromString" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="RR Intervall after conversion to Double " />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>758</posX>
+        <posY>607</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>2898</posY>
+        <width>2875</width>
+        <height>1111</height>
+      </gui>
+    </component>
+    <component id="StringToDouble.COMValues" type_id="asterics.StringToDouble">
+      <description>Converts string to values</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>709</posX>
+        <posY>414</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.RRIntervall" type_id="asterics.Oscilloscope">
+      <description>Oscilloscope display for one signal channel</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="0" />
+        <property name="drawingInterval" value="100" />
+        <property name="min" value="600" />
+        <property name="max" value="1100" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="1" />
+        <property name="backgroundColor" value="11" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="RR Intervalls [ms]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>1115</posX>
+        <posY>479</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>565</posY>
+        <width>2875</width>
+        <height>2222</height>
+      </gui>
+    </component>
+    <component id="Append Watch Data and Output when InputEvent" type_id="asterics.StringAppend">
+      <description>This plugin allows assembly of a string from single characters or substrings. The current and final results are sent to output ports.</description>
+      <ports>
+        <inputPort portTypeID="inStr">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inChar">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="actResult">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="finalResult">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="autoSendAtEnter" value="false" />
+        <property name="defaultValue" value="" />
+      </properties>
+      <layout>
+        <posX>0</posX>
+        <posY>23</posY>
+      </layout>
+    </component>
+    <component id="Extract_Error_Tags_NOT_NEEDED" type_id="asterics.StringExtractor">
+      <description>Extracts a subtext from a given input text and forwards it to the output port as soon as extraction was done based on start and end delimiter strings.
+Delimiters must be in the correct order and not overlapping. In case of several occurrences, always the first occurrence of the start and the end delimiter are used. 
+The event trigger port fires at successful extraction which is also the case for an empty extracted text (also handed to the output port).
+		</description>
+      <ports>
+        <inputPort portTypeID="inText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="extractedText">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="startDelimiter" value="&lt;ERROR&gt;" />
+        <property name="endDelimiter" value="&lt;/ERROR&gt;" />
+      </properties>
+      <layout>
+        <posX>158</posX>
+        <posY>550</posY>
+      </layout>
+    </component>
+    <component id="TextArea Watch Output" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="1:1 received" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>565</posX>
+        <posY>624</posY>
+      </layout>
+      <gui>
+        <posX>4856</posX>
+        <posY>667</posY>
+        <width>1250</width>
+        <height>2333</height>
+      </gui>
+    </component>
+    <component id="SmartWatch SerialPort.Bluetooth (RR Interval)" type_id="asterics.SerialPort">
+      <description>This plugin can send and receive data from a serial (COM) port.</description>
+      <ports>
+        <inputPort portTypeID="send">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="sendBytes">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="received">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="receivedBytes">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="opPortStatus">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="ComPort" value="COM3" />
+        <property name="BaudRate" value="9600" />
+        <property name="sendStringTerminator" value="0" />
+        <property name="receiveStringTerminator" value="0" />
+        <property name="sendBytesBufferSize" value="1" />
+        <property name="cimId" value="" />
+      </properties>
+      <layout>
+        <posX>0</posX>
+        <posY>380</posY>
+      </layout>
+    </component>
+    <component id="Tobii Eyes Fixation &amp; Position" type_id="asterics.EyeX">
+      <description>interfaces to the EyeX Gaze tracking system</description>
+      <ports>
+        <inputPort portTypeID="xOffset">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="yOffset">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="gazeX">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="gazeY">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="posX">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="posY">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="fixationTime">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="closeTime">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="enabled" value="true" />
+        <property name="averaging" value="50" />
+        <property name="minBlinkTime" value="1" />
+        <property name="midBlinkTime" value="1000" />
+        <property name="maxBlinkTime" value="2000" />
+        <property name="fixationTime" value="500" />
+        <property name="pupilPositionMode" value="2" />
+        <property name="offsetCorrectionRadius" value="5" />
+        <property name="offsetCorrectionMode" value="1" />
+      </properties>
+      <layout>
+        <posX>236</posX>
+        <posY>1555</posY>
+      </layout>
+    </component>
+    <component id="EventVisualizer.TrackerFixationsAndBlinks" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>0</posX>
+        <posY>1842</posY>
+      </layout>
+      <gui>
+        <posX>135</posX>
+        <posY>8787</posY>
+        <width>2812</width>
+        <height>1111</height>
+      </gui>
+    </component>
+    <component id="Format: &lt;Timestamp&gt;,&lt;BlinkThresh&gt;" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2133</posX>
+        <posY>960</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.Fixation" type_id="asterics.Oscilloscope">
+      <description>Oscilloscope display for one signal channel</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="100" />
+        <property name="min" value="0" />
+        <property name="max" value="10000" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="10" />
+        <property name="backgroundColor" value="11" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Eye Fixation Time (both eyes) [ms]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>544</posX>
+        <posY>1379</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>3676</posY>
+        <width>3062</width>
+        <height>2444</height>
+      </gui>
+    </component>
+    <component id="Slider: set FixationThresholdForClick" type_id="asterics.Slider">
+      <description>a slider GUI element which provides the slider value at an output port</description>
+      <ports>
+        <inputPort portTypeID="setValue">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="value">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="min" value="200" />
+        <property name="max" value="10000" />
+        <property name="default" value="1000" />
+        <property name="gain" value="200" />
+        <property name="autosend" value="True" />
+        <property name="caption" value="fixation threshold [ms]" />
+        <property name="majorTickSpacing" value="1000" />
+        <property name="minorTickSpacing" value="200" />
+        <property name="alignment" value="0" />
+        <property name="fontSize" value="8" />
+        <property name="storeValue" value="True" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>234</posX>
+        <posY>1828</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>6232</posY>
+        <width>3062</width>
+        <height>667</height>
+      </gui>
+    </component>
+    <component id="Compare Fixation time with slider value" type_id="asterics.Comparator">
+      <description>Comparator for two inputs</description>
+      <ports>
+        <inputPort portTypeID="inA">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="condition" value="0" />
+        <property name="outputMode" value="2" />
+        <property name="eventMode" value="0" />
+        <property name="threshold" value="5000" />
+        <property name="threshold2" value="10" />
+      </properties>
+      <layout>
+        <posX>427</posX>
+        <posY>1830</posY>
+      </layout>
+    </component>
+    <component id="Concatenate EyeEvents" type_id="asterics.MultiSourceString">
+      <description>Passes strings from input ports to the one output port</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>2270</posX>
+        <posY>854</posY>
+      </layout>
+    </component>
+    <component id="fixation thresh. exceeded event to String" type_id="asterics.StringDispatcher">
+      <description>Send text from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="delay" value="300" />
+        <property name="slot1" value="fixation threshold exceeded" />
+        <property name="slot2" value="" />
+        <property name="slot3" value="" />
+        <property name="slot4" value="" />
+        <property name="slot5" value="" />
+        <property name="slot6" value="" />
+        <property name="slot7" value="" />
+        <property name="slot8" value="" />
+        <property name="slot9" value="" />
+        <property name="slot10" value="" />
+        <property name="slot11" value="" />
+        <property name="slot12" value="" />
+        <property name="slot13" value="" />
+        <property name="slot14" value="" />
+        <property name="slot15" value="" />
+        <property name="slot16" value="" />
+        <property name="slot17" value="" />
+        <property name="slot18" value="" />
+        <property name="slot19" value="" />
+        <property name="slot20" value="" />
+      </properties>
+      <layout>
+        <posX>1134</posX>
+        <posY>1887</posY>
+      </layout>
+    </component>
+    <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" type_id="asterics.ButtonGrid">
+      <description>Keyboard which sends event after button press</description>
+      <ports />
+      <properties>
+        <property name="caption" value="Fixation Time Threshold" />
+        <property name="horizontalOrientation" value="True" />
+        <property name="textColor" value="13" />
+        <property name="backgroundColor" value="13" />
+        <property name="borderColor" value="13" />
+        <property name="borderThickness" value="1" />
+        <property name="selectionFrameColor" value="13" />
+        <property name="selectionFrameThickness" value="1" />
+        <property name="displayGUI" value="True" />
+        <property name="buttonCaption1" value="Calibrate" />
+        <property name="buttonCaption2" value="Start Eye Mouse" />
+        <property name="buttonCaption3" value="Stop Eye Mouse" />
+        <property name="buttonCaption4" value="" />
+        <property name="buttonCaption5" value="" />
+        <property name="buttonCaption6" value="" />
+        <property name="buttonCaption7" value="" />
+        <property name="buttonCaption8" value="" />
+        <property name="buttonCaption9" value="" />
+        <property name="buttonCaption10" value="" />
+        <property name="buttonCaption11" value="" />
+        <property name="buttonCaption12" value="" />
+        <property name="buttonCaption13" value="" />
+        <property name="buttonCaption14" value="" />
+        <property name="buttonCaption15" value="" />
+        <property name="buttonCaption16" value="" />
+        <property name="buttonCaption17" value="" />
+        <property name="buttonCaption18" value="" />
+        <property name="buttonCaption19" value="" />
+        <property name="buttonCaption20" value="" />
+        <property name="toolTip1" value="" />
+        <property name="toolTip2" value="" />
+        <property name="toolTip3" value="" />
+        <property name="toolTip4" value="" />
+        <property name="toolTip5" value="" />
+        <property name="toolTip6" value="" />
+        <property name="toolTip7" value="" />
+        <property name="toolTip8" value="" />
+        <property name="toolTip9" value="" />
+        <property name="toolTip10" value="" />
+        <property name="toolTip11" value="" />
+        <property name="toolTip12" value="" />
+        <property name="toolTip13" value="" />
+        <property name="toolTip14" value="" />
+        <property name="toolTip15" value="" />
+        <property name="toolTip16" value="" />
+        <property name="toolTip17" value="" />
+        <property name="toolTip18" value="" />
+        <property name="toolTip19" value="" />
+        <property name="toolTip20" value="" />
+      </properties>
+      <layout>
+        <posX>10</posX>
+        <posY>1647</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>3010</posY>
+        <width>3062</width>
+        <height>556</height>
+      </gui>
+    </component>
+    <component id="Output Both Blink and Fixation Events" type_id="asterics.MultiSourceString">
+      <description>Passes strings from input ports to the one output port</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>1244</posX>
+        <posY>1118</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.HR" type_id="asterics.Oscilloscope">
+      <description>Oscilloscope display for one signal channel</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="0" />
+        <property name="drawingInterval" value="100" />
+        <property name="min" value="50" />
+        <property name="max" value="200" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="8" />
+        <property name="backgroundColor" value="11" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Heart Rate [BPM]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>1223</posX>
+        <posY>479</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>4232</posY>
+        <width>2875</width>
+        <height>1667</height>
+      </gui>
+    </component>
+    <component id="MathEvaluator.HR_BPMfromRR" type_id="asterics.MathEvaluator">
+      <description>Mathematical expression evaluator</description>
+      <ports>
+        <inputPort portTypeID="inA">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inC">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inD">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="expression" value="60000/a" />
+      </properties>
+      <layout>
+        <posX>1141</posX>
+        <posY>306</posY>
+      </layout>
+    </component>
+    <component id="TextArea Error Message from Watch" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Extracted Error Message from COM " />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="4" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>324</posX>
+        <posY>624</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>676</posY>
+        <width>1812</width>
+        <height>1333</height>
+      </gui>
+    </component>
+    <component id="Oscilloscope.HRV_RMSSD" type_id="asterics.Oscilloscope">
+      <description>Oscilloscope display for one signal channel</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="0" />
+        <property name="drawingInterval" value="100" />
+        <property name="min" value="0" />
+        <property name="max" value="3000" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="7" />
+        <property name="backgroundColor" value="11" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Heart Rate Variability Score (RMSSD) [ms]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>1575</posX>
+        <posY>465</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>7010</posY>
+        <width>2875</width>
+        <height>1778</height>
+      </gui>
+    </component>
+    <component id="TextArea.RMSSD" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="HRV in terms of RMSSD [ms]" />
+        <property name="default" value="" />
+        <property name="editable" value="False" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="7" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>1518</posX>
+        <posY>774</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>8898</posY>
+        <width>2875</width>
+        <height>778</height>
+      </gui>
+    </component>
+    <component id="TextArea.HR_BPM" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Heart Rate [BPM]" />
+        <property name="default" value="" />
+        <property name="editable" value="False" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="8" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>1517</posX>
+        <posY>618</posY>
+      </layout>
+      <gui>
+        <posX>197</posX>
+        <posY>6010</posY>
+        <width>2875</width>
+        <height>778</height>
+      </gui>
+    </component>
+    <component id="HRVRmssdFromRR" type_id="asterics.HRVRmssdFromRR">
+      <description>Calculates and outputs the Heart Rate Variability (HRV) in terms of RMSSD (Root Mean Square of Successive Differences) in milliseconds (ms) based on incoming R-R intervals (also in ms). 
+A sliding window of the x most recent R-R intervals, x being the property rmssdWindowSize, is used for the calculation, which is first started as soon as there have been x samples since the last reset (or model start).
+Calculation and collection of samples can be paused and continued via event listener ports. The output port rmssd only delivers a value, if there is an actual calculation (i.e. currently no pause and enough samples).
+		</description>
+      <ports>
+        <inputPort portTypeID="rrInterval">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="rmssd">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="rmssdWindowSize" value="100" />
+      </properties>
+      <layout>
+        <posX>1175</posX>
+        <posY>702</posY>
+      </layout>
+    </component>
+    <component id="Button Clear/Reset All" type_id="asterics.ButtonGrid">
+      <description>Keyboard which sends event after button press</description>
+      <ports />
+      <properties>
+        <property name="caption" value="HRV / RMSSD" />
+        <property name="horizontalOrientation" value="false" />
+        <property name="textColor" value="13" />
+        <property name="backgroundColor" value="13" />
+        <property name="borderColor" value="13" />
+        <property name="borderThickness" value="1" />
+        <property name="selectionFrameColor" value="13" />
+        <property name="selectionFrameThickness" value="1" />
+        <property name="displayGUI" value="true" />
+        <property name="buttonCaption1" value="Reset HRV Calculation, Clear Heart Value Areas" />
+        <property name="buttonCaption2" value="" />
+        <property name="buttonCaption3" value="" />
+        <property name="buttonCaption4" value="" />
+        <property name="buttonCaption5" value="" />
+        <property name="buttonCaption6" value="" />
+        <property name="buttonCaption7" value="" />
+        <property name="buttonCaption8" value="" />
+        <property name="buttonCaption9" value="" />
+        <property name="buttonCaption10" value="" />
+        <property name="buttonCaption11" value="" />
+        <property name="buttonCaption12" value="" />
+        <property name="buttonCaption13" value="" />
+        <property name="buttonCaption14" value="" />
+        <property name="buttonCaption15" value="" />
+        <property name="buttonCaption16" value="" />
+        <property name="buttonCaption17" value="" />
+        <property name="buttonCaption18" value="" />
+        <property name="buttonCaption19" value="" />
+        <property name="buttonCaption20" value="" />
+        <property name="toolTip1" value="" />
+        <property name="toolTip2" value="" />
+        <property name="toolTip3" value="" />
+        <property name="toolTip4" value="" />
+        <property name="toolTip5" value="" />
+        <property name="toolTip6" value="" />
+        <property name="toolTip7" value="" />
+        <property name="toolTip8" value="" />
+        <property name="toolTip9" value="" />
+        <property name="toolTip10" value="" />
+        <property name="toolTip11" value="" />
+        <property name="toolTip12" value="" />
+        <property name="toolTip13" value="" />
+        <property name="toolTip14" value="" />
+        <property name="toolTip15" value="" />
+        <property name="toolTip16" value="" />
+        <property name="toolTip17" value="" />
+        <property name="toolTip18" value="" />
+        <property name="toolTip19" value="" />
+        <property name="toolTip20" value="" />
+      </properties>
+      <layout>
+        <posX>862</posX>
+        <posY>891</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>8898</posY>
+        <width>1750</width>
+        <height>778</height>
+      </gui>
+    </component>
+    <component id="TextArea.RRIntervallWithoutTypeConversion_NOT_NEEDED" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="RR string before conversion to Double" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="4" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>898</posX>
+        <posY>615</posY>
+      </layout>
+      <gui>
+        <posX>6260</posX>
+        <posY>3898</posY>
+        <width>1250</width>
+        <height>3778</height>
+      </gui>
+    </component>
+    <component id="DialogBox Error from Watch (NOT NEEDED)" type_id="asterics.DialogBox">
+      <description>creates a dialog box to display information</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Error!" />
+        <property name="text" value="this is an information" />
+        <property name="alwaysOnTop" value="true" />
+        <property name="messageType" value="4" />
+        <property name="buttonText1" value="OK" />
+        <property name="buttonText2" value="" />
+        <property name="buttonText3" value="" />
+        <property name="buttonText4" value="" />
+        <property name="buttonText5" value="" />
+      </properties>
+      <layout>
+        <posX>509</posX>
+        <posY>916</posY>
+      </layout>
+    </component>
+    <component id="Extract Error Tags and fire" type_id="asterics.StringExtractor">
+      <description>Extracts a subtext from a given input text and forwards it to the output port as soon as extraction was done based on start and end delimiter strings.
+Delimiters must be in the correct order and not overlapping. In case of several occurrences, always the first occurrence of the start and the end delimiter are used. 
+The event trigger port fires at successful extraction which is also the case for an empty extracted text (also handed to the output port).
+		</description>
+      <ports>
+        <inputPort portTypeID="inText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="extractedText">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="startDelimiter" value="&lt;ERROR&gt;" />
+        <property name="endDelimiter" value="&lt;/ERROR&gt;" />
+      </properties>
+      <layout>
+        <posX>11</posX>
+        <posY>685</posY>
+      </layout>
+    </component>
+    <component id="Error Popup" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>426</posX>
+        <posY>756</posY>
+      </layout>
+      <gui>
+        <posX>6197</posX>
+        <posY>676</posY>
+        <width>2688</width>
+        <height>1000</height>
+      </gui>
+    </component>
+    <component id="TextArea Message from Watch" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Unfiltered Error Message directly from COM" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="4" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>359</posX>
+        <posY>238</posY>
+      </layout>
+      <gui>
+        <posX>6197</posX>
+        <posY>2787</posY>
+        <width>2688</width>
+        <height>1000</height>
+      </gui>
+    </component>
+    <component id="Time Since last Values from Watch" type_id="asterics.Timer">
+      <description>measures and outputs time in milliseconds and fires events (periodically or once)</description>
+      <ports>
+        <inputPort portTypeID="period">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="time">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="mode" value="0" />
+        <property name="repeatCounter" value="1" />
+        <property name="timePeriod" value="5000" />
+        <property name="resolution" value="50" />
+        <property name="waitPeriod" value="0" />
+        <property name="autostart" value="True" />
+      </properties>
+      <layout>
+        <posX>812</posX>
+        <posY>1170</posY>
+      </layout>
+    </component>
+    <component id="DialogBox Error from Timer (app disconnected)" type_id="asterics.DialogBox">
+      <description>creates a dialog box to display information</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Error!" />
+        <property name="text" value="Bluetooth Connection to phone might be broken. Please, restart the Easy Reading App on your Phone and wait for further instructions." />
+        <property name="alwaysOnTop" value="true" />
+        <property name="messageType" value="4" />
+        <property name="buttonText1" value="OK" />
+        <property name="buttonText2" value="" />
+        <property name="buttonText3" value="" />
+        <property name="buttonText4" value="" />
+        <property name="buttonText5" value="" />
+      </properties>
+      <layout>
+        <posX>517</posX>
+        <posY>1182</posY>
+      </layout>
+    </component>
+    <component id="Write Current Timestamp" type_id="asterics.TimestampWriter">
+      <description>This plugin stores the time in milliseconds (ms) that passed by since the last reset (or start). 
+Outputs are the (via date string) formatted and numerical milliseconds and also a formatted absolute UNIX epoch timestamp 
+plus the absolute UNIX timestamp in ms. The time zone of the local system is used!
+		</description>
+      <ports>
+        <outputPort portTypeID="timePassedMs">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timePassedFormatted">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timestampUnixMs">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timestampUnixFormatted">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="timestampFormat" value="yyyy.MM.dd HH:mm:ss.SSS: " />
+        <property name="diffTimeFormat" value="HH:mm:ss.SSS: " />
+      </properties>
+      <layout>
+        <posX>1381</posX>
+        <posY>975</posY>
+      </layout>
+    </component>
+    <component id="Block/Allow Popups acc. to Button" type_id="asterics.EventBlock">
+      <description>Pass or block event</description>
+      <ports />
+      <properties>
+        <property name="block" value="True" />
+        <property name="blockAfterEvent" value="false" />
+      </properties>
+      <layout>
+        <posX>403</posX>
+        <posY>991</posY>
+      </layout>
+    </component>
+    <component id="Block/Allow Timer Popups acc. to Button" type_id="asterics.EventBlock">
+      <description>Pass or block event</description>
+      <ports />
+      <properties>
+        <property name="block" value="True" />
+        <property name="blockAfterEvent" value="false" />
+      </properties>
+      <layout>
+        <posX>392</posX>
+        <posY>1181</posY>
+      </layout>
+    </component>
+    <component id="Button: show popups?" type_id="asterics.ButtonGrid">
+      <description>Keyboard which sends event after button press</description>
+      <ports />
+      <properties>
+        <property name="caption" value="Block/Show Popup Messages" />
+        <property name="horizontalOrientation" value="false" />
+        <property name="textColor" value="13" />
+        <property name="backgroundColor" value="13" />
+        <property name="borderColor" value="13" />
+        <property name="borderThickness" value="1" />
+        <property name="selectionFrameColor" value="13" />
+        <property name="selectionFrameThickness" value="1" />
+        <property name="displayGUI" value="true" />
+        <property name="buttonCaption1" value="Block/Show Popup Messages" />
+        <property name="buttonCaption2" value="" />
+        <property name="buttonCaption3" value="" />
+        <property name="buttonCaption4" value="" />
+        <property name="buttonCaption5" value="" />
+        <property name="buttonCaption6" value="" />
+        <property name="buttonCaption7" value="" />
+        <property name="buttonCaption8" value="" />
+        <property name="buttonCaption9" value="" />
+        <property name="buttonCaption10" value="" />
+        <property name="buttonCaption11" value="" />
+        <property name="buttonCaption12" value="" />
+        <property name="buttonCaption13" value="" />
+        <property name="buttonCaption14" value="" />
+        <property name="buttonCaption15" value="" />
+        <property name="buttonCaption16" value="" />
+        <property name="buttonCaption17" value="" />
+        <property name="buttonCaption18" value="" />
+        <property name="buttonCaption19" value="" />
+        <property name="buttonCaption20" value="" />
+        <property name="toolTip1" value="" />
+        <property name="toolTip2" value="" />
+        <property name="toolTip3" value="" />
+        <property name="toolTip4" value="" />
+        <property name="toolTip5" value="" />
+        <property name="toolTip6" value="" />
+        <property name="toolTip7" value="" />
+        <property name="toolTip8" value="" />
+        <property name="toolTip9" value="" />
+        <property name="toolTip10" value="" />
+        <property name="toolTip11" value="" />
+        <property name="toolTip12" value="" />
+        <property name="toolTip13" value="" />
+        <property name="toolTip14" value="" />
+        <property name="toolTip15" value="" />
+        <property name="toolTip16" value="" />
+        <property name="toolTip17" value="" />
+        <property name="toolTip18" value="" />
+        <property name="toolTip19" value="" />
+        <property name="toolTip20" value="" />
+      </properties>
+      <layout>
+        <posX>233</posX>
+        <posY>1079</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>2121</posY>
+        <width>1812</width>
+        <height>556</height>
+      </gui>
+    </component>
+    <component id="WriteCSV.HR" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="HR" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2242</posX>
+        <posY>395</posY>
+      </layout>
+    </component>
+    <component id="&lt;Timestamp&gt;,&lt;fixationTime&gt;" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2050</posX>
+        <posY>1699</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV.RMSSD" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="RMSSD" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2237</posX>
+        <posY>602</posY>
+      </layout>
+    </component>
+    <component id="Format:&lt;Timestamp&gt;,&lt;BlinkOrFixationEvent&gt;" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2083</posX>
+        <posY>791</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV EyeEvents" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="EyeEvents" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2446</posX>
+        <posY>858</posY>
+      </layout>
+    </component>
+    <component id="Every 0.1s EventGenerator" type_id="asterics.EventGenerator">
+      <description>Simple Event generator</description>
+      <ports />
+      <properties>
+        <property name="generation_delay" value="100" />
+        <property name="event_payload" value="" />
+      </properties>
+      <layout>
+        <posX>1374</posX>
+        <posY>1255</posY>
+      </layout>
+    </component>
+    <component id="FixationEvent to String" type_id="asterics.StringDispatcher">
+      <description>Send text from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="delay" value="300" />
+        <property name="slot1" value="fixation" />
+        <property name="slot2" value="fixation_end" />
+        <property name="slot3" value="" />
+        <property name="slot4" value="" />
+        <property name="slot5" value="" />
+        <property name="slot6" value="" />
+        <property name="slot7" value="" />
+        <property name="slot8" value="" />
+        <property name="slot9" value="" />
+        <property name="slot10" value="" />
+        <property name="slot11" value="" />
+        <property name="slot12" value="" />
+        <property name="slot13" value="" />
+        <property name="slot14" value="" />
+        <property name="slot15" value="" />
+        <property name="slot16" value="" />
+        <property name="slot17" value="" />
+        <property name="slot18" value="" />
+        <property name="slot19" value="" />
+        <property name="slot20" value="" />
+      </properties>
+      <layout>
+        <posX>1024</posX>
+        <posY>1281</posY>
+      </layout>
+    </component>
+    <component id="BlinkEvent to String" type_id="asterics.StringDispatcher">
+      <description>Send text from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="delay" value="300" />
+        <property name="slot1" value="blink" />
+        <property name="slot2" value="long_blink" />
+        <property name="slot3" value="" />
+        <property name="slot4" value="" />
+        <property name="slot5" value="" />
+        <property name="slot6" value="" />
+        <property name="slot7" value="" />
+        <property name="slot8" value="" />
+        <property name="slot9" value="" />
+        <property name="slot10" value="" />
+        <property name="slot11" value="" />
+        <property name="slot12" value="" />
+        <property name="slot13" value="" />
+        <property name="slot14" value="" />
+        <property name="slot15" value="" />
+        <property name="slot16" value="" />
+        <property name="slot17" value="" />
+        <property name="slot18" value="" />
+        <property name="slot19" value="" />
+        <property name="slot20" value="" />
+      </properties>
+      <layout>
+        <posX>1029</posX>
+        <posY>1119</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.Timestamp_Comma_RMSSD" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>1871</posX>
+        <posY>559</posY>
+      </layout>
+    </component>
+    <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" type_id="asterics.StringExtractor">
+      <description>Extracts a subtext from a given input text and forwards it to the output port as soon as extraction was done based on start and end delimiter strings.
+Delimiters must be in the correct order and not overlapping. In case of several occurrences, always the first occurrence of the start and the end delimiter are used. 
+The event trigger port fires at successful extraction which is also the case for an empty extracted text (also handed to the output port).
+		</description>
+      <ports>
+        <inputPort portTypeID="inText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="extractedText">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="startDelimiter" value="[" />
+        <property name="endDelimiter" value="]" />
+      </properties>
+      <layout>
+        <posX>312</posX>
+        <posY>416</posY>
+      </layout>
+    </component>
+    <component id="EventGenerator.SendTimestampPerInterval.2" type_id="asterics.EventGenerator">
+      <description>Simple Event generator</description>
+      <ports />
+      <properties>
+        <property name="generation_delay" value="100" />
+        <property name="event_payload" value="" />
+      </properties>
+      <layout>
+        <posX>1327</posX>
+        <posY>211</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.Timestamp_Comma_HR" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>1869</posX>
+        <posY>379</posY>
+      </layout>
+    </component>
+    <component id="TextArea.FileOutput_HR_NOT_NEEDED" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="FileWriter_HR" />
+        <property name="default" value="" />
+        <property name="editable" value="False" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="10" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>2017</posX>
+        <posY>453</posY>
+      </layout>
+      <gui>
+        <posX>6260</posX>
+        <posY>8454</posY>
+        <width>2875</width>
+        <height>556</height>
+      </gui>
+    </component>
+    <component id="WriteCSV.FixationDurations" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="FixationDurations" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2230</posX>
+        <posY>1709</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.Timestamp_Comma_RRI" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>1587</posX>
+        <posY>58</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV.RRI" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="RR_Intervals" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>1789</posX>
+        <posY>37</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.EyeGazeXYTimeCommas" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2038</posX>
+        <posY>1387</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV.GazePositions" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="GazePoints" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2236</posX>
+        <posY>1393</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV.EyePositions" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="EyePositions" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2237</posX>
+        <posY>1553</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.PosXCommas" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="false">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="false">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="," />
+        <property name="postString" value="," />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>1026</posX>
+        <posY>1597</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.EyePosXYTimeCommas" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2044</posX>
+        <posY>1538</posY>
+      </layout>
+    </component>
+    <component id="StringDispatcher.Comma.2" type_id="asterics.StringDispatcher">
+      <description>Send text from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="delay" value="300" />
+        <property name="slot1" value="," />
+        <property name="slot2" value="" />
+        <property name="slot3" value="" />
+        <property name="slot4" value="" />
+        <property name="slot5" value="" />
+        <property name="slot6" value="" />
+        <property name="slot7" value="" />
+        <property name="slot8" value="" />
+        <property name="slot9" value="" />
+        <property name="slot10" value="" />
+        <property name="slot11" value="" />
+        <property name="slot12" value="" />
+        <property name="slot13" value="" />
+        <property name="slot14" value="" />
+        <property name="slot15" value="" />
+        <property name="slot16" value="" />
+        <property name="slot17" value="" />
+        <property name="slot18" value="" />
+        <property name="slot19" value="" />
+        <property name="slot20" value="" />
+      </properties>
+      <layout>
+        <posX>1698</posX>
+        <posY>207</posY>
+      </layout>
+    </component>
+    <component id="Comma Dispatcher" type_id="asterics.StringDispatcher">
+      <description>Send text from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="delay" value="300" />
+        <property name="slot1" value="," />
+        <property name="slot2" value="" />
+        <property name="slot3" value="" />
+        <property name="slot4" value="" />
+        <property name="slot5" value="" />
+        <property name="slot6" value="" />
+        <property name="slot7" value="" />
+        <property name="slot8" value="" />
+        <property name="slot9" value="" />
+        <property name="slot10" value="" />
+        <property name="slot11" value="" />
+        <property name="slot12" value="" />
+        <property name="slot13" value="" />
+        <property name="slot14" value="" />
+        <property name="slot15" value="" />
+        <property name="slot16" value="" />
+        <property name="slot17" value="" />
+        <property name="slot18" value="" />
+        <property name="slot19" value="" />
+        <property name="slot20" value="" />
+      </properties>
+      <layout>
+        <posX>1772</posX>
+        <posY>1089</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.GazeYCommas" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="false">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="false">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="," />
+        <property name="postString" value="," />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>1026</posX>
+        <posY>1437</posY>
+      </layout>
+    </component>
+    <component id="StringExpander.1.1.1.3" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString" sync="true">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="" />
+        <property name="postString" value="" />
+        <property name="trim" value="false" />
+      </properties>
+      <layout>
+        <posX>2046</posX>
+        <posY>1871</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV.BlinkCloseTime" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="BlinkCloseTime" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>2230</posX>
+        <posY>1868</posY>
+      </layout>
+    </component>
+    <component id="TimestampWriter.HeartMetricsFiles" type_id="asterics.TimestampWriter">
+      <description>This plugin stores the time in milliseconds (ms) that passed by since the last reset (or start). 
+Outputs are the (via date string) formatted and numerical milliseconds and also a formatted absolute UNIX epoch timestamp 
+plus the absolute UNIX timestamp in ms. The time zone of the local system is used!
+		</description>
+      <ports>
+        <outputPort portTypeID="timePassedMs">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timePassedFormatted">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timestampUnixMs">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="timestampUnixFormatted">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="timestampFormat" value="yyyy.MM.dd HH:mm:ss.SSS: " />
+        <property name="diffTimeFormat" value="HH:mm:ss.SSS: " />
+      </properties>
+      <layout>
+        <posX>1268</posX>
+        <posY>17</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.HowManyEyesBlink" type_id="asterics.Oscilloscope">
+      <description>how many eyes are closed [0..2]</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="10" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="60" />
+        <property name="min" value="0" />
+        <property name="max" value="3" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="2" />
+        <property name="backgroundColor" value="4" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="How many eyes blink [0, 1, 2]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>3379</posX>
+        <posY>1392</posY>
+      </layout>
+      <gui>
+        <posX>4866</posX>
+        <posY>7343</posY>
+        <width>1250</width>
+        <height>2333</height>
+      </gui>
+    </component>
+    <component id="EventLeftBlink" type_id="asterics.EventDispatcher">
+      <description>Translates incoming command strings into events</description>
+      <ports>
+        <inputPort portTypeID="cmd">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="command1" value="1" />
+        <property name="command2" value="" />
+        <property name="command3" value="" />
+        <property name="command4" value="" />
+        <property name="command5" value="" />
+        <property name="command6" value="" />
+        <property name="command7" value="" />
+        <property name="command8" value="" />
+        <property name="command9" value="" />
+        <property name="command10" value="" />
+      </properties>
+      <layout>
+        <posX>2896</posX>
+        <posY>1701</posY>
+      </layout>
+    </component>
+    <component id="EventVisualizer.BothEyesBlinkYesNo" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3237</posX>
+        <posY>1391</posY>
+      </layout>
+      <gui>
+        <posX>4938</posX>
+        <posY>4254</posY>
+        <width>2625</width>
+        <height>2000</height>
+      </gui>
+    </component>
+    <component id="FacetrackerCLM" type_id="asterics.FacetrackerCLM">
+      <description>Facetracker plugin. Ideal in mouse control models. It also implements a blink detection system.</description>
+      <ports>
+        <outputPort portTypeID="Roll">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="Pitch">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="Yaw">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="PosX">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="PosY">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="Scale">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="BrowLift">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="LipDistance">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="EyeLeft">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="EyeRight">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="cameraSelection" value="0" />
+        <property name="cameraResolution" value="2" />
+        <property name="modelName" value="Generic" />
+        <property name="cameraDisplayUpdate" value="100" />
+      </properties>
+      <layout>
+        <posX>2422</posX>
+        <posY>1269</posY>
+      </layout>
+      <gui>
+        <posX>322</posX>
+        <posY>787</posY>
+        <width>2000</width>
+        <height>1500</height>
+      </gui>
+    </component>
+    <component id="EventRightBlink" type_id="asterics.EventDispatcher">
+      <description>Translates incoming command strings into events</description>
+      <ports>
+        <inputPort portTypeID="cmd">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="command1" value="1" />
+        <property name="command2" value="" />
+        <property name="command3" value="" />
+        <property name="command4" value="" />
+        <property name="command5" value="" />
+        <property name="command6" value="" />
+        <property name="command7" value="" />
+        <property name="command8" value="" />
+        <property name="command9" value="" />
+        <property name="command10" value="" />
+      </properties>
+      <layout>
+        <posX>2894</posX>
+        <posY>1865</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.BothEyesBlinkDurationMs" type_id="asterics.Oscilloscope">
+      <description>the duration of both eyes being closed [ms] / blink duration</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="0" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="60" />
+        <property name="min" value="0" />
+        <property name="max" value="2" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="8" />
+        <property name="backgroundColor" value="4" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Blink Duration (both eyes) [ms]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>3100</posX>
+        <posY>671</posY>
+      </layout>
+      <gui>
+        <posX>6170</posX>
+        <posY>5155</posY>
+        <width>2750</width>
+        <height>2111</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.LeftBlink" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3014</posX>
+        <posY>1708</posY>
+      </layout>
+      <gui>
+        <posX>7625</posX>
+        <posY>2587</posY>
+        <width>1875</width>
+        <height>1667</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.RightBlink" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3023</posX>
+        <posY>1880</posY>
+      </layout>
+      <gui>
+        <posX>7625</posX>
+        <posY>476</posY>
+        <width>1875</width>
+        <height>2000</height>
+      </gui>
+    </component>
+    <component id="Comparator.BothEyesBlinkYesNo" type_id="asterics.Comparator">
+      <description>Comparator for two inputs</description>
+      <ports>
+        <inputPort portTypeID="inA">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="condition" value="3" />
+        <property name="outputMode" value="2" />
+        <property name="eventMode" value="1" />
+        <property name="threshold" value="1" />
+        <property name="threshold2" value="10" />
+      </properties>
+      <layout>
+        <posX>2895</posX>
+        <posY>1223</posY>
+      </layout>
+    </component>
+    <component id="MathEvaluator.CountBlinkingEyes" type_id="asterics.MathEvaluator">
+      <description>Mathematical expression evaluator</description>
+      <ports>
+        <inputPort portTypeID="inA" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inC" sync="false">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inD">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="expression" value="a+b" />
+      </properties>
+      <layout>
+        <posX>2585</posX>
+        <posY>1212</posY>
+      </layout>
+    </component>
+    <component id="BlinkChangeDetector_CameraSource" type_id="asterics.BlinkChangeDetector">
+      <description>The plugin detects blinks, based on both eyes' simultaneous open and closed states, which are indicated by externally fired events, 
+and then calculates and outputs blink-related metrics. When firing the eyes' state events, this plugin handles itself, 
+whether the state has changed or stayed the same for a while.
+A blink's start is defined as both eyes' state having simultaneously changed from open to closed, 
+the blink's end is indicated by both eyes' being reopened again. There is an ongoing (a "current") blink as soon as a blink's start is detected.
+        
+Metrics that can be forwarded and continuously output:
+The respective "forwarding" event listeners allow recalculating and forwarding blink rate or blink duration to the output ports on demand. 
+Further, blink rate and blink duration are recalculated and sent to the output ports when the eyes' state changes, and if specified via properties, in a certain interval. 
+If the eyes' state events are detected but the state has not changed, there is only a recalculation and output when propOutputIntervalMs 
+is set and has passed by since the last state-based output. 
+        
+Note: The duration changes while the eyes are closed and is set to 0 milliseconds when the eyes' state changes to closed. 
+It is longest at the first eyesAreOrBecomeOpen event in a row and then set back to 0 milliseconds again till the next eyesAreOrBecomeClosed is detected.
+In contrast, the rate changes steadily and is unlikely to ever be 0 Hz again, independently from eyes being closed or open.
+A blink is included in the rate calculation as soon as it has started (i.e. the eyes changed to closed).
+        
+Trends:
+Changes in blink rate and blink duration are analysed at certain eyes' states respectively state changes. 
+Then the plugin fires events, if certain thresholds are exceeded respectively undercut. 
+The detectable trends (rate increase/decrease and duration prolongation/shortening) work with the same basic detection algorithm,
+described below, but using trend-specific properties.
+The rate trend is analysed, when a blink starts or the output interval leads to recalculation. 
+The duration trend is only analysed, when a blink ends (as then the final duration is clear and 
+as there cannot be a duration analysis while no blink is going on, either). 
+Trend detection is never done when there is a rate or duration recalculation and output due to forwarding events.
+        
+Basic Trend Detection Algorithm: 
+Blink duration trend detection as well as blink rate trend detection allow certain thresholds. 
+All of them are optional and specify whether only an increasing, only a decreasing, both or no trends are detectable.
+Each calculated value not undercutting the lower and not exceeding the upper threshold is "within range". 
+		
+If the most recently calculated value is passed on to trend detection, three cases are possible: 
+	1) The value exceeds the upper threshold which starts the detection algorithm for a currently ongoing increasing trend.
+	2) The value undercuts the lower threshold which starts the detection algorithm for a currently ongoing decreasing trend.
+	3) The value is within range which means an ongoing trend is not interrupted but no new trend can be detected either.
+If one of the thresholds is not set, the corresponding case cannot appear but does not influence the others. 
+If trend detection into one direction is initiated, an opposite trend is always interrupted.
+Whenever starting trend detection into one direction, the corresponding internal counter (above upper threshold or below lower threshold)  
+is set to 1, then the buffer of earlier calculated values is walked through backwards, i.e. the more recent values first. 
+Each value within the range does not affect trend detection, whereas each crossing a threshold in the same direction increases 
+the counter and in the opposite direction interrupts this turn of trend detection.
+Results:
+The algorithm terminates with firing the corresponding trend detection event, as soon as the counter exceeds howManyDurationOutliers (for a duration trend) or howManyRateOutliers (for a rate trend), respectively.
+The algorithm terminates with not firing any detection event, if the start of the buffer was reached or if it was interrupted by a value crossing the opposite threshold. 
+        </description>
+      <ports>
+        <outputPort portTypeID="blinkDurationMs">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="blinkRateHz">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="outputIntervalMs" value="1000" />
+        <property name="trendsBufferSize" value="10" />
+        <property name="threshDurationHighMs" value="500" />
+        <property name="threshDurationLowMs" value="50" />
+        <property name="howManyDurationOutliers" value="3" />
+        <property name="threshRateHighHz" value="0.5" />
+        <property name="threshRateLowHz" value="0.3" />
+        <property name="howManyRateOutliers" value="3" />
+        <property name="rateObservationPeriodMinutes" value="1" />
+      </properties>
+      <layout>
+        <posX>2821</posX>
+        <posY>829</posY>
+      </layout>
+    </component>
+    <component id="PathMultiplexer.1.1" type_id="asterics.PathMultiplexer">
+      <description>Path Multiplexer forwards signal from the selected input to the output</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="number" value="1" />
+      </properties>
+      <layout>
+        <posX>2758</posX>
+        <posY>1388</posY>
+      </layout>
+    </component>
+    <component id="EventVisualizer.BlinkDurationTrendLonger" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3376</posX>
+        <posY>1218</posY>
+      </layout>
+      <gui>
+        <posX>6760</posX>
+        <posY>4121</posY>
+        <width>2250</width>
+        <height>3111</height>
+      </gui>
+    </component>
+    <component id="Oscilloscope.BothEyesBlinkRateHz" type_id="asterics.Oscilloscope">
+      <description>the rate of both eyes blinking [Hz] / blink rate</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="60" />
+        <property name="min" value="-1" />
+        <property name="max" value="2" />
+        <property name="gridColor" value="0" />
+        <property name="channelColor" value="5" />
+        <property name="backgroundColor" value="4" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Blink Rate (both eyes) [Hz]" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>3099</posX>
+        <posY>817</posY>
+      </layout>
+      <gui>
+        <posX>6212</posX>
+        <posY>765</posY>
+        <width>2750</width>
+        <height>2111</height>
+      </gui>
+    </component>
+    <component id="TextArea.BlinkDuration" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Duration [ms]" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="8" />
+        <property name="backgroundColor" value="4" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>3754</posX>
+        <posY>1397</posY>
+      </layout>
+      <gui>
+        <posX>6170</posX>
+        <posY>7377</posY>
+        <width>2750</width>
+        <height>1000</height>
+      </gui>
+    </component>
+    <component id="TextArea.BlinkRate" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Rate [Hz]" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="5" />
+        <property name="backgroundColor" value="4" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>3747</posX>
+        <posY>1233</posY>
+      </layout>
+      <gui>
+        <posX>6170</posX>
+        <posY>2822</posY>
+        <width>2750</width>
+        <height>1000</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.BlinkRateTrendIncreased" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3516</posX>
+        <posY>1222</posY>
+      </layout>
+      <gui>
+        <posX>4885</posX>
+        <posY>565</posY>
+        <width>2188</width>
+        <height>3333</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.BlinkDetection" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3086</posX>
+        <posY>1223</posY>
+      </layout>
+      <gui>
+        <posX>2812</posX>
+        <posY>4000</posY>
+        <width>2000</width>
+        <height>2000</height>
+      </gui>
+    </component>
+    <component id="Oscilloscope.RateTrendUpDown" type_id="asterics.Oscilloscope">
+      <description>the duration of both eyes being closed [ms] / blink duration</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="60" />
+        <property name="min" value="-2" />
+        <property name="max" value="2" />
+        <property name="gridColor" value="3" />
+        <property name="channelColor" value="0" />
+        <property name="backgroundColor" value="5" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Blink Rate Trend [up, down]" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>3870</posX>
+        <posY>1226</posY>
+      </layout>
+      <gui>
+        <posX>6170</posX>
+        <posY>3933</posY>
+        <width>2750</width>
+        <height>1111</height>
+      </gui>
+    </component>
+    <component id="ConstantDispatcher.RateTrendUpDown" type_id="asterics.ConstantDispatcher">
+      <description>Send double values from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="number" value="3" />
+        <property name="delay" value="300" />
+        <property name="slot1" value="1" />
+        <property name="slot2" value="-1" />
+        <property name="slot3" value="0" />
+        <property name="slot4" value="0" />
+        <property name="slot5" value="0" />
+        <property name="slot6" value="0" />
+        <property name="slot7" value="0" />
+        <property name="slot8" value="0" />
+        <property name="slot9" value="0" />
+        <property name="slot10" value="0" />
+        <property name="slot11" value="0" />
+        <property name="slot12" value="0" />
+        <property name="slot13" value="0" />
+        <property name="slot14" value="0" />
+        <property name="slot15" value="0" />
+        <property name="slot16" value="0" />
+        <property name="slot17" value="0" />
+        <property name="slot18" value="0" />
+        <property name="slot19" value="0" />
+        <property name="slot20" value="0" />
+        <property name="autosendSlot" value="0" />
+      </properties>
+      <layout>
+        <posX>3237</posX>
+        <posY>841</posY>
+      </layout>
+    </component>
+    <component id="ConstantDispatcher.DurationTrendUpDown" type_id="asterics.ConstantDispatcher">
+      <description>Send double values from chosen slot</description>
+      <ports>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+        <inputPort portTypeID="slotDispatch">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="number" value="3" />
+        <property name="delay" value="300" />
+        <property name="slot1" value="1" />
+        <property name="slot2" value="-1" />
+        <property name="slot3" value="0" />
+        <property name="slot4" value="0" />
+        <property name="slot5" value="0" />
+        <property name="slot6" value="0" />
+        <property name="slot7" value="0" />
+        <property name="slot8" value="0" />
+        <property name="slot9" value="0" />
+        <property name="slot10" value="0" />
+        <property name="slot11" value="0" />
+        <property name="slot12" value="0" />
+        <property name="slot13" value="0" />
+        <property name="slot14" value="0" />
+        <property name="slot15" value="0" />
+        <property name="slot16" value="0" />
+        <property name="slot17" value="0" />
+        <property name="slot18" value="0" />
+        <property name="slot19" value="0" />
+        <property name="slot20" value="0" />
+        <property name="autosendSlot" value="0" />
+      </properties>
+      <layout>
+        <posX>3868</posX>
+        <posY>1070</posY>
+      </layout>
+    </component>
+    <component id="Oscilloscope.DurationTrendUpDown" type_id="asterics.Oscilloscope">
+      <description>the duration of both eyes being closed [ms] / blink duration</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="displayBuffer" value="0" />
+        <property name="drawingMode" value="1" />
+        <property name="displayMode" value="1" />
+        <property name="drawingInterval" value="60" />
+        <property name="min" value="-2" />
+        <property name="max" value="2" />
+        <property name="gridColor" value="3" />
+        <property name="channelColor" value="0" />
+        <property name="backgroundColor" value="8" />
+        <property name="fontSize" value="14" />
+        <property name="caption" value="Blink Duration Trend [up, down]" />
+        <property name="displayGUI" value="True" />
+      </properties>
+      <layout>
+        <posX>3980</posX>
+        <posY>1224</posY>
+      </layout>
+      <gui>
+        <posX>6170</posX>
+        <posY>8489</posY>
+        <width>2750</width>
+        <height>1222</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.BlinkRateTrendDecreased" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3641</posX>
+        <posY>1233</posY>
+      </layout>
+      <gui>
+        <posX>7135</posX>
+        <posY>565</posY>
+        <width>2250</width>
+        <height>3333</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.BlinkDurationTrendShorter" type_id="asterics.EventVisualizer">
+      <description>Simple Event Visualizer</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>3237</posX>
+        <posY>1219</posY>
+      </layout>
+      <gui>
+        <posX>7197</posX>
+        <posY>6343</posY>
+        <width>2188</width>
+        <height>3111</height>
+      </gui>
+    </component>
+    <component id="Mouse" type_id="asterics.Mouse">
+      <description>Local mouse actuator, emulates mouse activity on local system</description>
+      <ports>
+        <inputPort portTypeID="mouseX">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="mouseY">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="action">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="outX">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="outY">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="enableMouse" value="False" />
+        <property name="absolutePosition" value="True" />
+        <property name="startCentered" value="true" />
+        <property name="xMin" value="0" />
+        <property name="xMax" value="0" />
+        <property name="yMin" value="0" />
+        <property name="yMax" value="0" />
+      </properties>
+      <layout>
+        <posX>406</posX>
+        <posY>1378</posY>
+      </layout>
+    </component>
+    <component id="EventCascade.PlaceMouseAndClick" type_id="asterics.EventCascade">
+      <description>allows to specify a sequence of events with arbitrary delay times and loops</description>
+      <ports />
+      <properties>
+        <property name="activeTriggers" value="4" />
+        <property name="loops" value="1" />
+        <property name="autoStart" value="false" />
+        <property name="delayBeforeTrigger1" value="5" />
+        <property name="delayBeforeTrigger2" value="5" />
+        <property name="delayBeforeTrigger3" value="5" />
+        <property name="delayBeforeTrigger4" value="5" />
+        <property name="delayBeforeTrigger5" value="500" />
+        <property name="delayBeforeTrigger6" value="500" />
+        <property name="delayBeforeTrigger7" value="500" />
+        <property name="delayBeforeTrigger8" value="500" />
+        <property name="delayBeforeTrigger9" value="500" />
+        <property name="delayBeforeTrigger10" value="500" />
+        <property name="delayBeforeTrigger11" value="500" />
+        <property name="delayBeforeTrigger12" value="500" />
+        <property name="delayBeforeTrigger13" value="500" />
+        <property name="delayBeforeTrigger14" value="500" />
+        <property name="delayBeforeTrigger15" value="500" />
+      </properties>
+      <layout>
+        <posX>164</posX>
+        <posY>1388</posY>
+      </layout>
+    </component>
+    <component id="EventBlock.BlockEyeMouseActivate" type_id="asterics.EventBlock">
+      <description>Pass or block event</description>
+      <ports />
+      <properties>
+        <property name="block" value="False" />
+        <property name="blockAfterEvent" value="false" />
+      </properties>
+      <layout>
+        <posX>0</posX>
+        <posY>1379</posY>
+      </layout>
+    </component>
+    <component id="Comparator.RRIAreNotEqual" type_id="asterics.Comparator">
+      <description>Comparator for two inputs</description>
+      <ports>
+        <inputPort portTypeID="inA">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="condition" value="3" />
+        <property name="outputMode" value="2" />
+        <property name="eventMode" value="0" />
+        <property name="threshold" value="1" />
+        <property name="threshold2" value="10" />
+      </properties>
+      <layout>
+        <posX>933</posX>
+        <posY>168</posY>
+      </layout>
+    </component>
+    <component id="Send succesive values to different ports" type_id="asterics.PathSelector">
+      <description>Pathselector routes signal to one of four output ports</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out1">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out2">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out3">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out4">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="activePorts" value="1" />
+      </properties>
+      <layout>
+        <posX>526</posX>
+        <posY>212</posY>
+      </layout>
+    </component>
+    <component id="MathEvaluator.RRIDifference" type_id="asterics.MathEvaluator">
+      <description>Mathematical expression evaluator</description>
+      <ports>
+        <inputPort portTypeID="inA">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inB" sync="true">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inC">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="inD">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="expression" value="abs(a-b)" />
+      </properties>
+      <layout>
+        <posX>753</posX>
+        <posY>198</posY>
+      </layout>
+    </component>
+    <component id="TextArea.DiffAB" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Difference between previous 2 intervals [ms]" />
+        <property name="default" value="" />
+        <property name="editable" value="false" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>973</posX>
+        <posY>0</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>8232</posY>
+        <width>1750</width>
+        <height>667</height>
+      </gui>
+    </component>
+    <component id="TextArea.PortA" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="RRI A" />
+        <property name="default" value="" />
+        <property name="editable" value="false" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>644</posX>
+        <posY>0</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>7676</posY>
+        <width>1750</width>
+        <height>556</height>
+      </gui>
+    </component>
+    <component id="TextArea.PortB" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="appendText">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="text">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="RRI B" />
+        <property name="default" value="" />
+        <property name="editable" value="false" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="true" />
+      </properties>
+      <layout>
+        <posX>822</posX>
+        <posY>0</posY>
+      </layout>
+      <gui>
+        <posX>3051</posX>
+        <posY>7010</posY>
+        <width>1750</width>
+        <height>667</height>
+      </gui>
+    </component>
+    <component id="EventVisualizer.DifferenceBetween2RRI_NOT_NEEDED" type_id="asterics.EventVisualizer">
+      <description>Are the 2 previous RRI's different</description>
+      <ports />
+      <properties>
+        <property name="displayGUI" value="False" />
+      </properties>
+      <layout>
+        <posX>1117</posX>
+        <posY>86</posY>
+      </layout>
+      <gui>
+        <posX>10</posX>
+        <posY>4010</posY>
+        <width>3000</width>
+        <height>1000</height>
+      </gui>
+    </component>
+    <component id="Route if not equal" type_id="asterics.PathSelector">
+      <description>Pathselector routes signal to one of four output ports</description>
+      <ports>
+        <inputPort portTypeID="in">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out1">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out2">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out3">
+          <properties />
+        </outputPort>
+        <outputPort portTypeID="out4">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="activePorts" value="0" />
+      </properties>
+      <layout>
+        <posX>930</posX>
+        <posY>432</posY>
+      </layout>
+    </component>
+    <component id="PathMultiplexer.RMSSDOsciSyncer" type_id="asterics.PathMultiplexer">
+      <description>Simply prevents that the RMSSD Osci is drawing less by outputting the previous RMSSD value if it did not change. Note, even though the drawing frequency is the same, once started, there is a delay till the first RMSSD has been calculated due to the window size.</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="number" value="2" />
+      </properties>
+      <layout>
+        <posX>1453</posX>
+        <posY>429</posY>
+      </layout>
+    </component>
+    <component id="AutostartEvent.BlockEyeMouse" type_id="asterics.AutostartEvent">
+      <description>Sends the event after model start, with defined delay.</description>
+      <ports />
+      <properties>
+        <property name="Delay" value="0" />
+      </properties>
+      <layout>
+        <posX>95</posX>
+        <posY>1209</posY>
+      </layout>
+    </component>
+    <component id="AutostartEvent.ShowConnectionPopup.1" type_id="asterics.AutostartEvent">
+      <description>Sends the event after model start, with defined delay.</description>
+      <ports />
+      <properties>
+        <property name="Delay" value="1000" />
+      </properties>
+      <layout>
+        <posX>-18</posX>
+        <posY>1019</posY>
+      </layout>
+    </component>
+    <component id="DialogBox.ConnectionPopup.1" type_id="asterics.DialogBox">
+      <description>creates a dialog box to display information</description>
+      <ports>
+        <inputPort portTypeID="setText">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="caption" value="Start Bluetooth Transmission!" />
+        <property name="text" value="Please, re-create bluetooth socket connection (Phone -&gt; PC) via checkbox in phone app!" />
+        <property name="alwaysOnTop" value="true" />
+        <property name="messageType" value="3" />
+        <property name="buttonText1" value="OK" />
+        <property name="buttonText2" value="" />
+        <property name="buttonText3" value="" />
+        <property name="buttonText4" value="" />
+        <property name="buttonText5" value="" />
+      </properties>
+      <layout>
+        <posX>143</posX>
+        <posY>1048</posY>
+      </layout>
+    </component>
+    <component id="WebSocket.1" type_id="asterics.WebSocket">
+      <description>This plugin uses a websocket connection to send and read data. The default websocket URI is ws://{hostname}:8082/ws/astericsData. You have to start the ARE with --webservice flag. You can test the connection with http://localhost:8082/
+        </description>
+      <ports>
+        <inputPort portTypeID="InA">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="OutA">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3980</posX>
+        <posY>283</posY>
+      </layout>
+    </component>
+    <component id="blinkRateHz to String" type_id="asterics.DoubleToString">
+      <description>Converts double to string</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3365</posX>
+        <posY>200</posY>
+      </layout>
+    </component>
+    <component id="blinkRateTrend to String" type_id="asterics.DoubleToString">
+      <description>Converts double to string</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3385</posX>
+        <posY>729</posY>
+      </layout>
+    </component>
+    <component id="Send All Input Strings.2" type_id="asterics.MultiSourceString">
+      <description>Passes strings from input ports to the one output port</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3674</posX>
+        <posY>605</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV SocketInput" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="WebSocket_All" />
+        <property name="FilePath" value="./data/csv_recordings" />
+      </properties>
+      <layout>
+        <posX>3979</posX>
+        <posY>524</posY>
+      </layout>
+    </component>
+    <component id="Format Fixation Duration" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="{fixation_reduced:" />
+        <property name="postString" value="}" />
+        <property name="trim" value="True" />
+      </properties>
+      <layout>
+        <posX>3532</posX>
+        <posY>43</posY>
+      </layout>
+    </component>
+    <component id="Format BlinkRateHz" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="{blinkRateHz:" />
+        <property name="postString" value="}" />
+        <property name="trim" value="True" />
+      </properties>
+      <layout>
+        <posX>3531</posX>
+        <posY>196</posY>
+      </layout>
+    </component>
+    <component id="Format BlinkRateTrend" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="{blinkRateTrend:" />
+        <property name="postString" value="}" />
+        <property name="trim" value="True" />
+      </properties>
+      <layout>
+        <posX>3531</posX>
+        <posY>728</posY>
+      </layout>
+    </component>
+    <component id="HRVRmssd (ms) to String" type_id="asterics.DoubleToString">
+      <description>Converts double to string</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3380</posX>
+        <posY>562</posY>
+      </layout>
+    </component>
+    <component id="Format HRVRmssd" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="{HRVRmssd:" />
+        <property name="postString" value="}" />
+        <property name="trim" value="True" />
+      </properties>
+      <layout>
+        <posX>3527</posX>
+        <posY>558</posY>
+      </layout>
+    </component>
+    <component id="HR_BPM to String" type_id="asterics.DoubleToString">
+      <description>Converts double to string</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3370</posX>
+        <posY>381</posY>
+      </layout>
+    </component>
+    <component id="Send All Input Strings.1" type_id="asterics.MultiSourceString">
+      <description>Passes strings from input ports to the one output port</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3679</posX>
+        <posY>192</posY>
+      </layout>
+    </component>
+    <component id="Format HR_BPM" type_id="asterics.StringExpander">
+      <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="preString">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="postString">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="preString" value="{HeartRate:" />
+        <property name="postString" value="}" />
+        <property name="trim" value="True" />
+      </properties>
+      <layout>
+        <posX>3535</posX>
+        <posY>363</posY>
+      </layout>
+    </component>
+    <component id="Send All Input Strings.3" type_id="asterics.MultiSourceString">
+      <description>Passes strings from input ports to the one output port</description>
+      <ports>
+        <inputPort portTypeID="input1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="input4">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3813</posX>
+        <posY>413</posY>
+      </layout>
+    </component>
+    <component id="TrendChangeDetector.1" type_id="asterics.TrendChangeDetector">
+      <description>Sends last output when a trend in a time series is detected</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="Trigger" value="less_than" />
+      </properties>
+      <layout>
+        <posX>663</posX>
+        <posY>1823</posY>
+      </layout>
+    </component>
+    <component id="DoubleToString.1" type_id="asterics.DoubleToString">
+      <description>Converts double to string</description>
+      <ports>
+        <inputPort portTypeID="input">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="output">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties />
+      <layout>
+        <posX>3369</posX>
+        <posY>43</posY>
+      </layout>
+    </component>
+  </components>
+  <channels>
+    <channel id="binding.30">
+      <source>
+        <component id="SmartWatch SerialPort.Bluetooth (RR Interval)" />
+        <port id="received" />
+      </source>
+      <target>
+        <component id="Append Watch Data and Output when InputEvent" />
+        <port id="inStr" />
+      </target>
+    </channel>
+    <channel id="binding.23">
+      <source>
+        <component id="StringToDouble.COMValues" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="TextArea.RRIntervallDoubleFromString" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.130">
+      <source>
+        <component id="Route if not equal" />
+        <port id="out1" />
+      </source>
+      <target>
+        <component id="Oscilloscope.RRIntervall" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.6">
+      <source>
+        <component id="SmartWatch SerialPort.Bluetooth (RR Interval)" />
+        <port id="received" />
+      </source>
+      <target>
+        <component id="TextArea Watch Output" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.98">
+      <source>
+        <component id="Append Watch Data and Output when InputEvent" />
+        <port id="actResult" />
+      </source>
+      <target>
+        <component id="Extract_Error_Tags_NOT_NEEDED" />
+        <port id="inText" />
+      </target>
+    </channel>
+    <channel id="binding.58">
+      <source>
+        <component id="Concatenate EyeEvents" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WriteCSV EyeEvents" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.78">
+      <source>
+        <component id="Output Both Blink and Fixation Events" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format:&lt;Timestamp&gt;,&lt;BlinkOrFixationEvent&gt;" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.9">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="Oscilloscope.Fixation" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.10">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="Compare Fixation time with slider value" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.11">
+      <source>
+        <component id="Slider: set FixationThresholdForClick" />
+        <port id="value" />
+      </source>
+      <target>
+        <component id="Compare Fixation time with slider value" />
+        <port id="inB" />
+      </target>
+    </channel>
+    <channel id="binding.131">
+      <source>
+        <component id="Route if not equal" />
+        <port id="out1" />
+      </source>
+      <target>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.18">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="Oscilloscope.HR" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.95">
+      <source>
+        <component id="Append Watch Data and Output when InputEvent" />
+        <port id="actResult" />
+      </source>
+      <target>
+        <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+        <port id="inText" />
+      </target>
+    </channel>
+    <channel id="binding.22">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="TextArea.HR_BPM" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.97">
+      <source>
+        <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+        <port id="extractedText" />
+      </source>
+      <target>
+        <component id="TextArea.RRIntervallWithoutTypeConversion_NOT_NEEDED" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.96">
+      <source>
+        <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+        <port id="extractedText" />
+      </source>
+      <target>
+        <component id="StringToDouble.COMValues" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.100">
+      <source>
+        <component id="Extract Error Tags and fire" />
+        <port id="extractedText" />
+      </source>
+      <target>
+        <component id="TextArea Error Message from Watch" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.101">
+      <source>
+        <component id="Extract Error Tags and fire" />
+        <port id="extractedText" />
+      </source>
+      <target>
+        <component id="DialogBox Error from Watch (NOT NEEDED)" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.27">
+      <source>
+        <component id="Append Watch Data and Output when InputEvent" />
+        <port id="finalResult" />
+      </source>
+      <target>
+        <component id="TextArea Message from Watch" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.99">
+      <source>
+        <component id="Append Watch Data and Output when InputEvent" />
+        <port id="finalResult" />
+      </source>
+      <target>
+        <component id="Extract Error Tags and fire" />
+        <port id="inText" />
+      </target>
+    </channel>
+    <channel id="binding.72">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_HR" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.36">
+      <source>
+        <component id="StringExpander.Timestamp_Comma_RMSSD" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WriteCSV.RMSSD" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.69">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="&lt;Timestamp&gt;,&lt;fixationTime&gt;" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.39">
+      <source>
+        <component id="BlinkEvent to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Output Both Blink and Fixation Events" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.68">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="Format:&lt;Timestamp&gt;,&lt;BlinkOrFixationEvent&gt;" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.42">
+      <source>
+        <component id="FixationEvent to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Output Both Blink and Fixation Events" />
+        <port id="input2" />
+      </target>
+    </channel>
+    <channel id="binding.77">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="&lt;Timestamp&gt;,&lt;fixationTime&gt;" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.66">
+      <source>
+        <component id="TimestampWriter.HeartMetricsFiles" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_HR" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.44">
+      <source>
+        <component id="StringExpander.Timestamp_Comma_HR" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="TextArea.FileOutput_HR_NOT_NEEDED" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.34">
+      <source>
+        <component id="StringExpander.Timestamp_Comma_HR" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WriteCSV.HR" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.84">
+      <source>
+        <component id="Format:&lt;Timestamp&gt;,&lt;BlinkOrFixationEvent&gt;" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Concatenate EyeEvents" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.70">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="Format: &lt;Timestamp&gt;,&lt;BlinkThresh&gt;" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.76">
+      <source>
+        <component id="fixation thresh. exceeded event to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format: &lt;Timestamp&gt;,&lt;BlinkThresh&gt;" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.52">
+      <source>
+        <component id="Format: &lt;Timestamp&gt;,&lt;BlinkThresh&gt;" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Concatenate EyeEvents" />
+        <port id="input2" />
+      </target>
+    </channel>
+    <channel id="binding.91">
+      <source>
+        <component id="StringDispatcher.Comma.2" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RRI" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.71">
+      <source>
+        <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+        <port id="extractedText" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RRI" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.55">
+      <source>
+        <component id="StringExpander.Timestamp_Comma_RRI" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WriteCSV.RRI" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.82">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeX" />
+      </source>
+      <target>
+        <component id="StringExpander.GazeYCommas" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.57">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeY" />
+      </source>
+      <target>
+        <component id="StringExpander.EyeGazeXYTimeCommas" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.83">
+      <source>
+        <component id="StringExpander.GazeYCommas" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.EyeGazeXYTimeCommas" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.102">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.EyeGazeXYTimeCommas" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.61">
+      <source>
+        <component id="StringExpander.PosXCommas" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.EyePosXYTimeCommas" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.62">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.EyePosXYTimeCommas" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.63">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="posX" />
+      </source>
+      <target>
+        <component id="StringExpander.PosXCommas" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.64">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="posY" />
+      </source>
+      <target>
+        <component id="StringExpander.EyePosXYTimeCommas" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.86">
+      <source>
+        <component id="TimestampWriter.HeartMetricsFiles" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RRI" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.73">
+      <source>
+        <component id="StringDispatcher.Comma.2" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_HR" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.75">
+      <source>
+        <component id="StringDispatcher.Comma.2" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RMSSD" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.79">
+      <source>
+        <component id="Comma Dispatcher" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format:&lt;Timestamp&gt;,&lt;BlinkOrFixationEvent&gt;" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.80">
+      <source>
+        <component id="Comma Dispatcher" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="&lt;Timestamp&gt;,&lt;fixationTime&gt;" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.81">
+      <source>
+        <component id="Comma Dispatcher" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format: &lt;Timestamp&gt;,&lt;BlinkThresh&gt;" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.88">
+      <source>
+        <component id="Comma Dispatcher" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="StringExpander.1.1.1.3" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.89">
+      <source>
+        <component id="Write Current Timestamp" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.1.1.1.3" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.90">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="closeTime" />
+      </source>
+      <target>
+        <component id="StringExpander.1.1.1.3" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.126">
+      <source>
+        <component id="StringToDouble.COMValues" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Route if not equal" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.92">
+      <source>
+        <component id="PathMultiplexer.RMSSDOsciSyncer" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Oscilloscope.HRV_RMSSD" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.93">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RMSSD" />
+        <port id="postString" />
+      </target>
+    </channel>
+    <channel id="binding.94">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="TextArea.RMSSD" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.151">
+      <source>
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DoubleToString.1" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.104">
+      <source>
+        <component id="TimestampWriter.HeartMetricsFiles" />
+        <port id="timestampUnixMs" />
+      </source>
+      <target>
+        <component id="StringExpander.Timestamp_Comma_RMSSD" />
+        <port id="preString" />
+      </target>
+    </channel>
+    <channel id="binding.67">
+      <source>
+        <component id="FacetrackerCLM" />
+        <port id="EyeLeft" />
+      </source>
+      <target>
+        <component id="EventLeftBlink" />
+        <port id="cmd" />
+      </target>
+    </channel>
+    <channel id="binding.105">
+      <source>
+        <component id="FacetrackerCLM" />
+        <port id="EyeRight" />
+      </source>
+      <target>
+        <component id="EventRightBlink" />
+        <port id="cmd" />
+      </target>
+    </channel>
+    <channel id="binding.106">
+      <source>
+        <component id="MathEvaluator.CountBlinkingEyes" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="Comparator.BothEyesBlinkYesNo" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.107">
+      <source>
+        <component id="FacetrackerCLM" />
+        <port id="EyeRight" />
+      </source>
+      <target>
+        <component id="MathEvaluator.CountBlinkingEyes" />
+        <port id="inB" />
+      </target>
+    </channel>
+    <channel id="binding.108">
+      <source>
+        <component id="FacetrackerCLM" />
+        <port id="EyeLeft" />
+      </source>
+      <target>
+        <component id="MathEvaluator.CountBlinkingEyes" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.109">
+      <source>
+        <component id="MathEvaluator.CountBlinkingEyes" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="PathMultiplexer.1.1" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.110">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="Oscilloscope.BothEyesBlinkDurationMs" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.111">
+      <source>
+        <component id="PathMultiplexer.1.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Oscilloscope.HowManyEyesBlink" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.112">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkRateHz" />
+      </source>
+      <target>
+        <component id="Oscilloscope.BothEyesBlinkRateHz" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.113">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="TextArea.BlinkDuration" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.114">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkRateHz" />
+      </source>
+      <target>
+        <component id="TextArea.BlinkRate" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.115">
+      <source>
+        <component id="ConstantDispatcher.RateTrendUpDown" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Oscilloscope.RateTrendUpDown" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.118">
+      <source>
+        <component id="ConstantDispatcher.DurationTrendUpDown" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Oscilloscope.DurationTrendUpDown" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.116">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeX" />
+      </source>
+      <target>
+        <component id="Mouse" />
+        <port id="mouseX" />
+      </target>
+    </channel>
+    <channel id="binding.117">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeY" />
+      </source>
+      <target>
+        <component id="Mouse" />
+        <port id="mouseY" />
+      </target>
+    </channel>
+    <channel id="binding.119">
+      <source>
+        <component id="StringToDouble.COMValues" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send succesive values to different ports" />
+        <port id="in" />
+      </target>
+    </channel>
+    <channel id="binding.121">
+      <source>
+        <component id="Send succesive values to different ports" />
+        <port id="out2" />
+      </source>
+      <target>
+        <component id="MathEvaluator.RRIDifference" />
+        <port id="inB" />
+      </target>
+    </channel>
+    <channel id="binding.120">
+      <source>
+        <component id="Send succesive values to different ports" />
+        <port id="out1" />
+      </source>
+      <target>
+        <component id="MathEvaluator.RRIDifference" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.122">
+      <source>
+        <component id="MathEvaluator.RRIDifference" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="Comparator.RRIAreNotEqual" />
+        <port id="inA" />
+      </target>
+    </channel>
+    <channel id="binding.123">
+      <source>
+        <component id="Send succesive values to different ports" />
+        <port id="out1" />
+      </source>
+      <target>
+        <component id="TextArea.PortA" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.124">
+      <source>
+        <component id="Send succesive values to different ports" />
+        <port id="out2" />
+      </source>
+      <target>
+        <component id="TextArea.PortB" />
+        <port id="setText" />
+      </target>
+    </channel>
+    <channel id="binding.125">
+      <source>
+        <component id="MathEvaluator.RRIDifference" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="TextArea.DiffAB" />
+        <port id="appendText" />
+      </target>
+    </channel>
+    <channel id="binding.127">
+      <source>
+        <component id="Route if not equal" />
+        <port id="out1" />
+      </source>
+      <target>
+        <component id="HRVRmssdFromRR" />
+        <port id="rrInterval" />
+      </target>
+    </channel>
+    <channel id="binding.128">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="PathMultiplexer.RMSSDOsciSyncer" />
+        <port id="input2" />
+      </target>
+    </channel>
+    <channel id="binding.129">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="PathMultiplexer.RMSSDOsciSyncer" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.132">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkRateHz" />
+      </source>
+      <target>
+        <component id="blinkRateHz to String" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.134">
+      <source>
+        <component id="blinkRateTrend to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format BlinkRateTrend" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.135">
+      <source>
+        <component id="ConstantDispatcher.RateTrendUpDown" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="blinkRateTrend to String" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.133">
+      <source>
+        <component id="blinkRateHz to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format BlinkRateHz" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.148">
+      <source>
+        <component id="Send All Input Strings.2" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.3" />
+        <port id="input3" />
+      </target>
+    </channel>
+    <channel id="binding.138">
+      <source>
+        <component id="Send All Input Strings.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.3" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.137">
+      <source>
+        <component id="DoubleToString.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format Fixation Duration" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.140">
+      <source>
+        <component id="Format Fixation Duration" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.1" />
+        <port id="input1" />
+      </target>
+    </channel>
+    <channel id="binding.141">
+      <source>
+        <component id="Format BlinkRateHz" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.1" />
+        <port id="input2" />
+      </target>
+    </channel>
+    <channel id="binding.145">
+      <source>
+        <component id="Format BlinkRateTrend" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.2" />
+        <port id="input4" />
+      </target>
+    </channel>
+    <channel id="binding.143">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="HRVRmssd (ms) to String" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.144">
+      <source>
+        <component id="HRVRmssd (ms) to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format HRVRmssd" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.142">
+      <source>
+        <component id="Format HRVRmssd" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.2" />
+        <port id="input3" />
+      </target>
+    </channel>
+    <channel id="binding.146">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="HR_BPM to String" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.147">
+      <source>
+        <component id="HR_BPM to String" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Format HR_BPM" />
+        <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.139">
+      <source>
+        <component id="Format HR_BPM" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="Send All Input Strings.3" />
+        <port id="input2" />
+      </target>
+    </channel>
+    <channel id="binding.149">
+      <source>
+        <component id="Send All Input Strings.3" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WebSocket.1" />
+        <port id="InA" />
+      </target>
+    </channel>
+    <channel id="binding.150">
+      <source>
+        <component id="Send All Input Strings.3" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="WriteCSV SocketInput" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.136">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="TrendChangeDetector.1" />
+        <port id="input" />
+      </target>
+    </channel>
+  </channels>
+  <eventChannels>
+    <eventChannel id="button1_calibrateCurrentProfile">
+      <description />
+      <sources>
+        <source>
+          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="calibrateCurrentProfile" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Compare Fixation time with slider value" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.TrackerFixationsAndBlinks" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="fixationEnd_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="fixationEnd" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.TrackerFixationsAndBlinks" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="fixation_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="fixation" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.TrackerFixationsAndBlinks" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blink_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="blink" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.TrackerFixationsAndBlinks" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_clear">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TextArea Watch Output" />
+          <eventPort id="clear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_clear">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TextArea.RRIntervallWithoutTypeConversion_NOT_NEEDED" />
+          <eventPort id="clear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_clear">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TextArea.HR_BPM" />
+          <eventPort id="clear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_clear">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TextArea.RMSSD" />
+          <eventPort id="clear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_change">
+      <description />
+      <sources>
+        <source>
+          <component id="Button: show popups?" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Block/Allow Popups acc. to Button" />
+          <eventPort id="change" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="output_displayBox">
+      <description />
+      <sources>
+        <source>
+          <component id="Block/Allow Popups acc. to Button" />
+          <eventPort id="output" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="DialogBox Error from Watch (NOT NEEDED)" />
+          <eventPort id="displayBox" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="output_displayBox">
+      <description />
+      <sources>
+        <source>
+          <component id="Block/Allow Timer Popups acc. to Button" />
+          <eventPort id="output" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="DialogBox Error from Timer (app disconnected)" />
+          <eventPort id="displayBox" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_change">
+      <description />
+      <sources>
+        <source>
+          <component id="Button: show popups?" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Block/Allow Timer Popups acc. to Button" />
+          <eventPort id="change" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="periodFinished_input">
+      <description />
+      <sources>
+        <source>
+          <component id="Time Since last Values from Watch" />
+          <eventPort id="periodFinished" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Block/Allow Timer Popups acc. to Button" />
+          <eventPort id="input" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blink_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="blink" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="BlinkEvent to String" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="longblink_dispatchSlot2">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="longblink" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="BlinkEvent to String" />
+          <eventPort id="dispatchSlot2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="fixation_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="fixation" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="FixationEvent to String" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="fixationEnd_dispatchSlot2">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="fixationEnd" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="FixationEvent to String" />
+          <eventPort id="dispatchSlot2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="event_out_1_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="EventGenerator.SendTimestampPerInterval.2" />
+          <eventPort id="event_out_1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="StringDispatcher.Comma.2" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="event_out_1_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="Every 0.1s EventGenerator" />
+          <eventPort id="event_out_1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Comma Dispatcher" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="longblink_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Tobii Eyes Fixation &amp; Position" />
+          <eventPort id="longblink" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.TrackerFixationsAndBlinks" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="event_out_1_sendOutputs">
+      <description />
+      <sources>
+        <source>
+          <component id="EventGenerator.SendTimestampPerInterval.2" />
+          <eventPort id="event_out_1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TimestampWriter.HeartMetricsFiles" />
+          <eventPort id="sendOutputs" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_sendNowAndClear">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Append Watch Data and Output when InputEvent" />
+          <eventPort id="sendNowAndClear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_start">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Time Since last Values from Watch" />
+          <eventPort id="start" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_reset">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Time Since last Values from Watch" />
+          <eventPort id="reset" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_sendNowAndClear">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract_Error_Tags_NOT_NEEDED" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Append Watch Data and Output when InputEvent" />
+          <eventPort id="sendNowAndClear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract_Error_Tags_NOT_NEEDED" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Error Popup" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_input">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract Error Tags and fire" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Block/Allow Popups acc. to Button" />
+          <eventPort id="input" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="event_out_1_sendOutputs">
+      <description />
+      <sources>
+        <source>
+          <component id="Every 0.1s EventGenerator" />
+          <eventPort id="event_out_1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Write Current Timestamp" />
+          <eventPort id="sendOutputs" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkDurationLonger_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkDurationShorter" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkDurationTrendShorter" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkRateDecreased_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkRateDecreased" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkRateTrendDecreased" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkDurationShorter_dispatchSlot2">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkDurationShorter" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="ConstantDispatcher.DurationTrendUpDown" />
+          <eventPort id="dispatchSlot2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkDurationLonger_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkDurationLonger" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="ConstantDispatcher.DurationTrendUpDown" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkRateDecreased_dispatchSlot2">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkRateDecreased" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="ConstantDispatcher.RateTrendUpDown" />
+          <eventPort id="dispatchSlot2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkRateIncreased_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkRateIncreased" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="ConstantDispatcher.RateTrendUpDown" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkEnds_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkEnds" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkDetection" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkStarts_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkStarts" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkDetection" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkRateIncreased_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkRateIncreased" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkRateTrendIncreased" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="blinkDurationLonger_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="blinkDurationLonger" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BlinkDurationTrendLonger" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_eyesAreOrBecomeClosed">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="eyesAreOrBecomeClosed" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionFalse_passPort1">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionFalse" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="PathMultiplexer.1.1" />
+          <eventPort id="passPort1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_passPort1">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="PathMultiplexer.1.1" />
+          <eventPort id="passPort1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionFalse_eyesAreOrBecomeOpen">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionFalse" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="BlinkChangeDetector_CameraSource" />
+          <eventPort id="eyesAreOrBecomeOpen" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="recognizedCommand1_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="EventRightBlink" />
+          <eventPort id="recognizedCommand1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.RightBlink" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="recognizedCommand1_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="EventLeftBlink" />
+          <eventPort id="recognizedCommand1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.LeftBlink" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BothEyesBlinkYesNo" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionFalse_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.BothEyesBlinkYesNo" />
+          <eventPort id="conditionFalse" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.BothEyesBlinkYesNo" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_clear">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="TextArea.RRIntervallDoubleFromString" />
+          <eventPort id="clear" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button3_block">
+      <description />
+      <sources>
+        <source>
+          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
+          <eventPort id="button3" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventBlock.BlockEyeMouseActivate" />
+          <eventPort id="block" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_input">
+      <description />
+      <sources>
+        <source>
+          <component id="Compare Fixation time with slider value" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventBlock.BlockEyeMouseActivate" />
+          <eventPort id="input" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button2_pass">
+      <description />
+      <sources>
+        <source>
+          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
+          <eventPort id="button2" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventBlock.BlockEyeMouseActivate" />
+          <eventPort id="pass" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="trigger1_activate">
+      <description />
+      <sources>
+        <source>
+          <component id="EventCascade.PlaceMouseAndClick" />
+          <eventPort id="trigger1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Mouse" />
+          <eventPort id="activate" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="trigger2_absolutePosition">
+      <description />
+      <sources>
+        <source>
+          <component id="EventCascade.PlaceMouseAndClick" />
+          <eventPort id="trigger2" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Mouse" />
+          <eventPort id="absolutePosition" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="trigger3_leftClick">
+      <description />
+      <sources>
+        <source>
+          <component id="EventCascade.PlaceMouseAndClick" />
+          <eventPort id="trigger3" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Mouse" />
+          <eventPort id="leftClick" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="trigger4_deactivate">
+      <description />
+      <sources>
+        <source>
+          <component id="EventCascade.PlaceMouseAndClick" />
+          <eventPort id="trigger4" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Mouse" />
+          <eventPort id="deactivate" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="output_startCascade">
+      <description />
+      <sources>
+        <source>
+          <component id="EventBlock.BlockEyeMouseActivate" />
+          <eventPort id="output" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventCascade.PlaceMouseAndClick" />
+          <eventPort id="startCascade" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="button1_resetCalculation">
+      <description />
+      <sources>
+        <source>
+          <component id="Button Clear/Reset All" />
+          <eventPort id="button1" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="HRVRmssdFromRR" />
+          <eventPort id="resetCalculation" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="textExtracted_selectNext">
+      <description />
+      <sources>
+        <source>
+          <component id="Extract &quot;[&quot; and &quot;]&quot; Delimiters and fire" />
+          <eventPort id="textExtracted" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Send succesive values to different ports" />
+          <eventPort id="selectNext" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_eventDisplay">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.RRIAreNotEqual" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventVisualizer.DifferenceBetween2RRI_NOT_NEEDED" />
+          <eventPort id="eventDisplay" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_select1">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.RRIAreNotEqual" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Route if not equal" />
+          <eventPort id="select1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionFalse_select2">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.RRIAreNotEqual" />
+          <eventPort id="conditionFalse" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="Route if not equal" />
+          <eventPort id="select2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_passPort2">
+      <description />
+      <sources>
+        <source>
+          <component id="Comparator.RRIAreNotEqual" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="PathMultiplexer.RMSSDOsciSyncer" />
+          <eventPort id="passPort2" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="rmssdRecalculated_passPort1">
+      <description />
+      <sources>
+        <source>
+          <component id="HRVRmssdFromRR" />
+          <eventPort id="rmssdRecalculated" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="PathMultiplexer.RMSSDOsciSyncer" />
+          <eventPort id="passPort1" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="output_block">
+      <description />
+      <sources>
+        <source>
+          <component id="AutostartEvent.BlockEyeMouse" />
+          <eventPort id="output" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="EventBlock.BlockEyeMouseActivate" />
+          <eventPort id="block" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="output_displayBox">
+      <description />
+      <sources>
+        <source>
+          <component id="AutostartEvent.ShowConnectionPopup.1" />
+          <eventPort id="output" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="DialogBox.ConnectionPopup.1" />
+          <eventPort id="displayBox" />
+        </target>
+      </targets>
+    </eventChannel>
+    <eventChannel id="conditionTrue_dispatchSlot1">
+      <description />
+      <sources>
+        <source>
+          <component id="Compare Fixation time with slider value" />
+          <eventPort id="conditionTrue" />
+        </source>
+      </sources>
+      <targets>
+        <target>
+          <component id="fixation thresh. exceeded event to String" />
+          <eventPort id="dispatchSlot1" />
+        </target>
+      </targets>
+    </eventChannel>
+  </eventChannels>
+  <groups>
+    <group id="group.ReconnectMsgBox">
+      <description>Alert, because whenever this model is restarted, the socket connection must be re-established via the phone GUI (uncheck + check target checkbox).</description>
+      <componentId>AutostartEvent.ShowConnectionPopup.1</componentId>
+      <componentId>DialogBox.ConnectionPopup.1</componentId>
+    </group>
+  </groups>
+  <modelGUI>
+    <Decoration>true</Decoration>
+    <Fullscreen>false</Fullscreen>
+    <AlwaysOnTop>false</AlwaysOnTop>
+    <ToSystemTray>false</ToSystemTray>
+    <ShopControlPanel>true</ShopControlPanel>
+    <AREGUIWindow>
+      <posX>235</posX>
+      <posY>133</posY>
+      <width>9438</width>
+      <height>10000</height>
+    </AREGUIWindow>
+  </modelGUI>
+</model>
