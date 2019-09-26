@@ -318,12 +318,9 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (ready && propActivePorts > 4) {
 				ready = ipIn5ready;
 			}
-			AstericsErrorHandling.instance.getLogger().info("Ready: " + ready);
-			return ready;
-		} else {
-			AstericsErrorHandling.instance.getLogger().info("All ready: " + allReady);
-			return allReady;
+			allReady = ready;
 		}
+		return allReady;
 	}
 
 	private void resetPortFlags() {
@@ -372,6 +369,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			}
 		}
 		retString = retString.concat("}");
+		// AstericsErrorHandling.instance.getLogger().info("Output: " + retString);
 		return retString;
 	}
 	
