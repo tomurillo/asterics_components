@@ -181,7 +181,7 @@ public class TrendChangeDetectorInstance extends AbstractRuntimeComponentInstanc
                 }
             }
             if (trendChange) {
-                AstericsErrorHandling.instance.getLogger().info("New value found: " + prevReadVal);
+                //AstericsErrorHandling.instance.getLogger().info("New value found: " + prevReadVal);
                 opOutput.sendData(ConversionUtils.doubleToBytes(prevReadVal.doubleValue()));
             }
             prevReadVal = (Double) inputVal;
