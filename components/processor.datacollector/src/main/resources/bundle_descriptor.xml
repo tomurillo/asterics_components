@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<componentTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="bundle_model.xsd">
+
+    <componentType id="asterics.DataCollector"
+                   canonical_name="eu.asterics.component.processor.datacollector.DataCollectorInstance">
+        <type subtype="Others">processor</type>
+        <singleton>false</singleton>
+        <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+        <ports>
+			<inputPort id="in1">
+				<description>Input signal 1</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+			<inputPort id="in2">
+				<description>Input signal 2</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+			<inputPort id="in3">
+				<description>Input signal 3</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+			<inputPort id="in4">
+				<description>Input signal 4</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+			<inputPort id="in5">
+				<description>Input signal 5</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>double</dataType>
+			</inputPort>
+
+			<outputPort id="out">
+				<description>output combined signals</description>
+				<dataType>string</dataType>
+			</outputPort>
+
+        </ports>
+		<events>
+
+
+		</events>			
+        <properties>
+			<property name="activePorts"
+				type="integer"
+				value="1"
+				description="Number of input ports that are considered"/>
+			<property name="key1"
+				type="string"
+				value="key1"
+				description="Key for signal 1"/>
+			<property name="key2"
+				type="string"
+				value="key2"
+				description="Key for signal 2"/>
+			<property name="key3"
+				type="string"
+				value="key3"
+				description="Key for signal 3"/>
+			<property name="key4"
+				type="string"
+				value="key4"
+				description="Key for signal 4"/>
+			<property name="key5"
+				type="string"
+				value="key5"
+				description="Key for signal 5"/>
+
+        </properties>
+
+    </componentType>
+</componentTypes>
