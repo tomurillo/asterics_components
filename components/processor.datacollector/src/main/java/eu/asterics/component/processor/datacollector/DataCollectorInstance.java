@@ -29,6 +29,8 @@ package eu.asterics.component.processor.datacollector;
 
 
 import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.sql.Timestamp;
 import eu.asterics.mw.data.ConversionUtils;
 import eu.asterics.mw.model.runtime.AbstractRuntimeComponentInstance;
 import eu.asterics.mw.model.runtime.IRuntimeInputPort;
@@ -43,34 +45,49 @@ import eu.asterics.mw.services.AREServices;
 
 /**
  * 
- * Collect and combine heterogeneous data sources into a single output.
+ * Collect and combine heterogeneous data sources into a single JSON string output.
  *
  * @author Tomas Murillo-Morales [Tomas.Murillo_Morales@jku.at]
  *         Date: 26/09/2019
  */
 public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 {
+
+	public static final int DEFAULT_DELAY = 1000;  // Default delay of 1 second
+
 	final IRuntimeOutputPort opOut = new DefaultRuntimeOutputPort();
 
 	int propActivePorts = 1;
 	String propKey1 = "key1";
+	String operator1 = "operator1";
 	String propKey2 = "key2";
+	String operator2 = "operator2";
 	String propKey3 = "key3";
+	String operator3 = "operator3";
 	String propKey4 = "key4";
+	String operator4 = "operator4";
 	String propKey5 = "key5";
+	String operator5 = "operator5";
+	int outputDelay = DEFAULT_DELAY;
 
 	// Member variables
 	double ipIn1collector = 0; // Collects latest received value from port 1
 	boolean ipIn1ready = false; // True if value received from port 1 needs to be sent out
+	int count1 = 0; // Number of received discrete values from port 1
 	double ipIn2collector = 0;
 	boolean ipIn2ready = false;
+	int count2 = 0;
 	double ipIn3collector = 0;
 	boolean ipIn3ready = false;
+	int count3 = 0;
 	double ipIn4collector = 0;
 	boolean ipIn4ready = false;
+	int count4 = 0;
 	double ipIn5collector = 0;
 	boolean ipIn5ready = false;
+	int count5 = 0;
 	boolean allReady = false; // All ports have already received at least one value; collectors have useful data
+	long startTime = 0L;
 
    /**
     * Class constructor.
@@ -155,31 +172,53 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
      */
     public Object getRuntimePropertyValue(String propertyName)
     {
-		if ("activePorts".equalsIgnoreCase(propertyName))
+		if ("outputDelay".equalsIgnoreCase(propertyName)) {
+			return outputDelay;
+		}
+		else if ("activePorts".equalsIgnoreCase(propertyName))
 		{
 			return propActivePorts;
 		}
-		if ("key1".equalsIgnoreCase(propertyName))
+		else if ("key1".equalsIgnoreCase(propertyName))
 		{
 			return propKey1;
 		}
-		if ("key2".equalsIgnoreCase(propertyName))
+		else if ("operator1".equalsIgnoreCase(propertyName))
+		{
+			return operator1;
+		}
+		else if ("key2".equalsIgnoreCase(propertyName))
 		{
 			return propKey2;
 		}
-		if ("key3".equalsIgnoreCase(propertyName))
+		else if ("operator2".equalsIgnoreCase(propertyName))
+		{
+			return operator2;
+		}
+		else if ("key3".equalsIgnoreCase(propertyName))
 		{
 			return propKey3;
 		}
-		if ("key4".equalsIgnoreCase(propertyName))
+		else if ("operator3".equalsIgnoreCase(propertyName))
+		{
+			return operator3;
+		}
+		else if ("key4".equalsIgnoreCase(propertyName))
 		{
 			return propKey4;
 		}
-		if ("key5".equalsIgnoreCase(propertyName))
+		else if ("operator4".equalsIgnoreCase(propertyName))
+		{
+			return operator4;
+		}
+		else if ("key5".equalsIgnoreCase(propertyName))
 		{
 			return propKey5;
 		}
-
+		else if ("operator5".equalsIgnoreCase(propertyName))
+		{
+			return operator5;
+		}
         return null;
     }
 
@@ -190,40 +229,75 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
      */
     public Object setRuntimePropertyValue(String propertyName, Object newValue)
     {
-		if ("activePorts".equalsIgnoreCase(propertyName))
+		if ("outputDelay".equalsIgnoreCase(propertyName)) {
+			final Integer oldValue = outputDelay;
+			outputDelay = Integer.parseInt(newValue.toString());
+			return oldValue;
+		}
+		else if ("activePorts".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propActivePorts;
 			propActivePorts = Integer.parseInt(newValue.toString());
 			return oldValue;
 		}
-		if ("key1".equalsIgnoreCase(propertyName))
+		else if ("key1".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propKey1;
 			propKey1 = (String)newValue;
 			return oldValue;
 		}
-		if ("key2".equalsIgnoreCase(propertyName))
+		else if ("operator1".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = operator1;
+			operator1 = (String)newValue;
+			return oldValue;
+		}
+		else if ("key2".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propKey2;
 			propKey2 = (String)newValue;
 			return oldValue;
 		}
-		if ("key3".equalsIgnoreCase(propertyName))
+		else if ("operator2".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = operator2;
+			operator2 = (String)newValue;
+			return oldValue;
+		}
+		else if ("key3".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propKey3;
 			propKey3 = (String)newValue;
 			return oldValue;
 		}
-		if ("key4".equalsIgnoreCase(propertyName))
+		else if ("operator3".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = operator3;
+			operator3 = (String)newValue;
+			return oldValue;
+		}
+		else if ("key4".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propKey4;
 			propKey4 = (String)newValue;
 			return oldValue;
 		}
-		if ("key5".equalsIgnoreCase(propertyName))
+		else if ("operator4".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = operator4;
+			operator4 = (String)newValue;
+			return oldValue;
+		}
+		else if ("key5".equalsIgnoreCase(propertyName))
 		{
 			final Object oldValue = propKey5;
 			propKey5 = (String)newValue;
+			return oldValue;
+		}
+		else if ("operator5".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = operator5;
+			operator5 = (String)newValue;
 			return oldValue;
 		}
 
@@ -238,10 +312,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
-			ipIn1collector = in;
-			ipIn1ready = true;
-			if (allPortsReady()) {
-				opOut.sendData(ConversionUtils.stringToBytes(combineInputs()));
+			if (in > 0) {
+				ipIn1collector = applyOperator(ipIn1collector, ++count1, in, operator1);
+				ipIn1ready = true;
+				if (allReady()) {
+					startTime = System.currentTimeMillis();
+					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+					resetBuffers();
+				}
 			}
 		}
 	};
@@ -250,10 +328,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
-			ipIn2collector = in;
-			ipIn2ready = true;
-			if (allPortsReady()) {
-				opOut.sendData(ConversionUtils.stringToBytes(combineInputs()));
+			if (in > 0) {
+				ipIn2collector = applyOperator(ipIn2collector, ++count2, in, operator2);
+				ipIn2ready = true;
+				if (allReady()) {
+					startTime = System.currentTimeMillis();
+					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+					resetBuffers();
+				}
 			}
 		}
 	};
@@ -262,10 +344,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
-			ipIn3collector = in;
-			ipIn3ready = true;
-			if (allPortsReady()) {
-				opOut.sendData(ConversionUtils.stringToBytes(combineInputs()));
+			if (in > 0) {
+				ipIn3collector = applyOperator(ipIn3collector, ++count3, in, operator3);
+				ipIn3ready = true;
+				if (allReady()) {
+					startTime = System.currentTimeMillis();
+					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+					resetBuffers();
+				}
 			}
 		}
 	};
@@ -274,10 +360,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
-			ipIn4collector = in;
-			ipIn4ready = true;
-			if (allPortsReady()) {
-				opOut.sendData(ConversionUtils.stringToBytes(combineInputs()));
+			if (in > 0) {
+				ipIn4collector = applyOperator(ipIn4collector, ++count4, in, operator4);
+				ipIn4ready = true;
+				if (allReady()) {
+					startTime = System.currentTimeMillis();
+					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+					resetBuffers();
+				}
 			}
 		}
 	};
@@ -286,10 +376,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
-			ipIn5collector = in;
-			ipIn5ready = true;
-			if (allPortsReady()) {
-				opOut.sendData(ConversionUtils.stringToBytes(combineInputs()));
+			if (in > 0) {
+				ipIn5collector = applyOperator(ipIn5collector, ++count5, in, operator5);
+				ipIn5ready = true;
+				if (allReady()) {
+					startTime = System.currentTimeMillis();
+					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+					resetBuffers();
+				}
 			}
 		}
 	};
@@ -300,9 +394,10 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 
 	/**
 	 * Returns whether all input ports are ready i.e. every port has already received at least one value
+	 * and whether enough time has passed for data to be sent out
 	 * @return
 	 */
-	private boolean allPortsReady() {
+	private boolean allReady() {
 		if (!allReady && propActivePorts > 0) {
 			boolean ready = false;
 			ready = ipIn1ready;
@@ -320,28 +415,83 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			}
 			allReady = ready;
 		}
+		if (allReady && this.outputDelay > 0) {
+			long endTime = System.currentTimeMillis();
+			if (endTime - this.startTime < this.outputDelay) {
+				allReady = false;
+			}
+		}
 		return allReady;
 	}
 
+	/**
+	 * Apply the given operator to the data received from a port
+	 * @return
+	 */
+	private double applyOperator(double in_prev, int count, double in, String op) {
+		double retVal = 0;
+		if ("average".equalsIgnoreCase(op) || "avg".equalsIgnoreCase(op)) {
+			retVal = in_prev + ((in - in_prev) / count);  // Incremental average
+		} else if ("sum".equalsIgnoreCase(op)) {
+			retVal = in_prev + in;
+		} else if (op == null || op.isEmpty() || "none".equalsIgnoreCase(op) || "no".equalsIgnoreCase(op)) {
+			retVal = in;
+		} else {
+			throw new IllegalArgumentException("Unknown operator!");
+		}
+		return retVal;
+	}
+
 	private void resetPortFlags() {
+		this.resetPortFlags(false);
+	}
+
+	private void resetPortFlags(boolean resetBuffers) {
 		allReady = false;
 		ipIn1ready = false;
 		ipIn2ready = false;
 		ipIn3ready = false;
 		ipIn4ready = false;
 		ipIn5ready = false;
+		if (resetBuffers) {
+			resetBuffers();
+		}
+	}
+
+	private void resetBuffers() {
+		ipIn1collector = 0;
+		count1 = 0;
+		ipIn2collector = 0;
+		count2 = 0;
+		ipIn3collector = 0;
+		count3 = 0;
+		ipIn4collector = 0;
+		count4 = 0;
+		ipIn5collector = 0;
+		count5 = 0;
+	}
+
+	private String combineInputs() {
+		return combineInputs(System.currentTimeMillis());
 	}
 
 	/**
 	 * Returns the combined input port values as a JSON-formatted string
 	 * @return String
 	 */
-	private String combineInputs() {
+	private String combineInputs(long timeStamp) {
 		String retString = "";
 		if (!allReady || propActivePorts <= 0) {
 			return retString;
 		}
-		retString = "{\"".concat(propKey1);
+		if (timeStamp > 0) {
+			String fullTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(timeStamp));
+			retString = "{\"timestamp\":\"".concat(fullTimeStamp);
+			retString = retString.concat("\",\"");
+			retString = retString.concat(propKey1);
+		} else {
+			retString = "{\"".concat(propKey1);
+		}
 		retString = retString.concat("\":");
 		retString = retString.concat(String.format("%f", ipIn1collector));
 		if (propActivePorts > 1) {
@@ -380,6 +530,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
       @Override
       public void start()
       {
+      	  this.startTime = System.currentTimeMillis();
           super.start();
       }
 
@@ -399,6 +550,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
       @Override
       public void resume()
       {
+		  this.startTime = System.currentTimeMillis();
           super.resume();
       }
 
@@ -408,7 +560,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
       @Override
       public void stop()
       {
-		  this.resetPortFlags();
+		  this.resetPortFlags(true);
           super.stop();
       }
 }

@@ -45,6 +45,10 @@
 
 		</events>			
         <properties>
+			<property name="outputDelay"
+					  type="integer"
+					  value="1000"
+					  description="Delay, in milliseconds, between output JSON objects. 0 to send immediately"/>
 			<property name="activePorts"
 				type="integer"
 				value="1"
@@ -53,22 +57,42 @@
 				type="string"
 				value="key1"
 				description="Key for signal 1"/>
+			<property name="operator1"
+					  type="string"
+					  value="none"
+					  description="Operator to apply to incoming port 1 signals"/>
 			<property name="key2"
 				type="string"
 				value="key2"
 				description="Key for signal 2"/>
+			<property name="operator2"
+					  type="string"
+					  value="none"
+					  description="Operator to apply to incoming port 2 signals"/>
 			<property name="key3"
 				type="string"
 				value="key3"
 				description="Key for signal 3"/>
+			<property name="operator3"
+					  type="string"
+					  value="none"
+					  description="Operator to apply to incoming port 3 signals"/>
 			<property name="key4"
 				type="string"
 				value="key4"
 				description="Key for signal 4"/>
+			<property name="operator4"
+					  type="string"
+					  value="none"
+					  description="Operator to apply to incoming port 4 signals"/>
 			<property name="key5"
 				type="string"
 				value="key5"
 				description="Key for signal 5"/>
+			<property name="operator5"
+					  type="string"
+					  value="none"
+					  description="Operator to apply to incoming port 5 signals"/>
 
         </properties>
 
