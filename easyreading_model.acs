@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_9_18_14_5" version="20130320">
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_10_9_14_46" version="20130320">
   <components>
     <component id="TextArea.RRIntervallDoubleFromString" type_id="asterics.TextArea">
       <description>GUI component, which displays text.</description>
@@ -1006,8 +1006,8 @@ plus the absolute UNIX timestamp in ms. The time zone of the local system is use
         <property name="diffTimeFormat" value="HH:mm:ss.SSS: " />
       </properties>
       <layout>
-        <posX>1381</posX>
-        <posY>975</posY>
+        <posX>1484</posX>
+        <posY>935</posY>
       </layout>
     </component>
     <component id="Block/Allow Popups acc. to Button" type_id="asterics.EventBlock">
@@ -1195,8 +1195,8 @@ plus the absolute UNIX timestamp in ms. The time zone of the local system is use
         <property name="FilePath" value="./data/csv_recordings" />
       </properties>
       <layout>
-        <posX>2446</posX>
-        <posY>858</posY>
+        <posX>2444</posX>
+        <posY>856</posY>
       </layout>
     </component>
     <component id="Every 0.1s EventGenerator" type_id="asterics.EventGenerator">
@@ -1207,8 +1207,8 @@ plus the absolute UNIX timestamp in ms. The time zone of the local system is use
         <property name="event_payload" value="" />
       </properties>
       <layout>
-        <posX>1374</posX>
-        <posY>1255</posY>
+        <posX>1702</posX>
+        <posY>773</posY>
       </layout>
     </component>
     <component id="FixationEvent to String" type_id="asterics.StringDispatcher">
@@ -1608,8 +1608,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="slot20" value="" />
       </properties>
       <layout>
-        <posX>1698</posX>
-        <posY>207</posY>
+        <posX>1714</posX>
+        <posY>210</posY>
       </layout>
     </component>
     <component id="Comma Dispatcher" type_id="asterics.StringDispatcher">
@@ -1646,8 +1646,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="slot20" value="" />
       </properties>
       <layout>
-        <posX>1772</posX>
-        <posY>1089</posY>
+        <posX>1799</posX>
+        <posY>1118</posY>
       </layout>
     </component>
     <component id="StringExpander.GazeYCommas" type_id="asterics.StringExpander">
@@ -2079,8 +2079,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="rateObservationPeriodMinutes" value="1" />
       </properties>
       <layout>
-        <posX>2821</posX>
-        <posY>829</posY>
+        <posX>2737</posX>
+        <posY>824</posY>
       </layout>
     </component>
     <component id="PathMultiplexer.1.1" type_id="asterics.PathMultiplexer">
@@ -2327,8 +2327,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="autosendSlot" value="0" />
       </properties>
       <layout>
-        <posX>3237</posX>
-        <posY>841</posY>
+        <posX>3252</posX>
+        <posY>863</posY>
       </layout>
     </component>
     <component id="ConstantDispatcher.DurationTrendUpDown" type_id="asterics.ConstantDispatcher">
@@ -2817,8 +2817,8 @@ The algorithm terminates with not firing any detection event, if the start of th
       </ports>
       <properties />
       <layout>
-        <posX>3980</posX>
-        <posY>283</posY>
+        <posX>3030</posX>
+        <posY>14</posY>
       </layout>
     </component>
     <component id="blinkRateHz to String" type_id="asterics.DoubleToString">
@@ -3124,7 +3124,7 @@ The algorithm terminates with not firing any detection event, if the start of th
         <posY>1823</posY>
       </layout>
     </component>
-    <component id="DoubleToString.1" type_id="asterics.DoubleToString">
+    <component id="FixationDuration to String" type_id="asterics.DoubleToString">
       <description>Converts double to string</description>
       <ports>
         <inputPort portTypeID="input">
@@ -3138,6 +3138,120 @@ The algorithm terminates with not firing any detection event, if the start of th
       <layout>
         <posX>3369</posX>
         <posY>43</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV JSON" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="WebSocket_5s" />
+        <property name="FilePath" value="./data/json_collect_recordings" />
+      </properties>
+      <layout>
+        <posX>3035</posX>
+        <posY>181</posY>
+      </layout>
+    </component>
+    <component id="WriteCSV JSON.1" type_id="asterics.WriteCSV">
+      <description>Write a csv file</description>
+      <ports>
+        <inputPort portTypeID="Input">
+          <properties />
+        </inputPort>
+      </ports>
+      <properties>
+        <property name="FileName" value="WebSocket_All" />
+        <property name="FilePath" value="./data/json_collect_recordings" />
+      </properties>
+      <layout>
+        <posX>2428</posX>
+        <posY>45</posY>
+      </layout>
+    </component>
+    <component id="DataCollector_5s" type_id="asterics.DataCollector">
+      <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+      <ports>
+        <inputPort portTypeID="in1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in4">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in5">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="outputDelay" value="5000" />
+        <property name="activePorts" value="3" />
+        <property name="key1" value="fixation_ms" />
+        <property name="operator1" value="avg" />
+        <property name="key2" value="blink_ms" />
+        <property name="operator2" value="avg" />
+        <property name="key3" value="blink_rate" />
+        <property name="operator3" value="none" />
+        <property name="key4" value="key4" />
+        <property name="operator4" value="none" />
+        <property name="key5" value="key5" />
+        <property name="operator5" value="none" />
+      </properties>
+      <layout>
+        <posX>2637</posX>
+        <posY>41</posY>
+      </layout>
+    </component>
+    <component id="DataCollector_all" type_id="asterics.DataCollector">
+      <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+      <ports>
+        <inputPort portTypeID="in1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in4">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in5">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
+      <properties>
+        <property name="outputDelay" value="0" />
+        <property name="activePorts" value="3" />
+        <property name="key1" value="fixation_ms" />
+        <property name="operator1" value="none" />
+        <property name="key2" value="blink_ms" />
+        <property name="operator2" value="none" />
+        <property name="key3" value="blink_rate" />
+        <property name="operator3" value="none" />
+        <property name="key4" value="key4" />
+        <property name="operator4" value="none" />
+        <property name="key5" value="key5" />
+        <property name="operator5" value="none" />
+      </properties>
+      <layout>
+        <posX>2208</posX>
+        <posY>36</posY>
       </layout>
     </component>
   </components>
@@ -3728,7 +3842,7 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="output" />
       </source>
       <target>
-        <component id="DoubleToString.1" />
+        <component id="FixationDuration to String" />
         <port id="input" />
       </target>
     </channel>
@@ -4054,7 +4168,7 @@ The algorithm terminates with not firing any detection event, if the start of th
     </channel>
     <channel id="binding.137">
       <source>
-        <component id="DoubleToString.1" />
+        <component id="FixationDuration to String" />
         <port id="output" />
       </source>
       <target>
@@ -4152,24 +4266,14 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="input2" />
       </target>
     </channel>
-    <channel id="binding.149">
+    <channel id="binding.156">
       <source>
-        <component id="Send All Input Strings.3" />
+        <component id="ConstantDispatcher.RateTrendUpDown" />
         <port id="output" />
       </source>
       <target>
-        <component id="WebSocket.1" />
-        <port id="InA" />
-      </target>
-    </channel>
-    <channel id="binding.150">
-      <source>
-        <component id="Send All Input Strings.3" />
-        <port id="output" />
-      </source>
-      <target>
-        <component id="WriteCSV SocketInput" />
-        <port id="Input" />
+        <component id="DataCollector_5s" />
+        <port id="in3" />
       </target>
     </channel>
     <channel id="binding.136">
@@ -4180,6 +4284,86 @@ The algorithm terminates with not firing any detection event, if the start of th
       <target>
         <component id="TrendChangeDetector.1" />
         <port id="input" />
+      </target>
+    </channel>
+    <channel id="binding.154">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="in2" />
+      </target>
+    </channel>
+    <channel id="binding.149">
+      <source>
+        <component id="DataCollector_5s" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="WebSocket.1" />
+        <port id="InA" />
+      </target>
+    </channel>
+    <channel id="binding.153">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="DataCollector_all" />
+        <port id="in2" />
+      </target>
+    </channel>
+    <channel id="binding.155">
+      <source>
+        <component id="ConstantDispatcher.RateTrendUpDown" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_all" />
+        <port id="in3" />
+      </target>
+    </channel>
+    <channel id="binding.152">
+      <source>
+        <component id="DataCollector_all" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="WriteCSV JSON.1" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.159">
+      <source>
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="in1" />
+      </target>
+    </channel>
+    <channel id="binding.160">
+      <source>
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_all" />
+        <port id="in1" />
+      </target>
+    </channel>
+    <channel id="binding.150">
+      <source>
+        <component id="DataCollector_5s" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="WriteCSV JSON" />
+        <port id="Input" />
       </target>
     </channel>
   </channels>
