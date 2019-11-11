@@ -41,9 +41,11 @@
 
         </ports>
 		<events>
-
-
-		</events>			
+			<eventTriggererPort id="dataCollected">
+				<description>Triggers when a new JSON package is sent through the output port
+				</description>
+			</eventTriggererPort>
+		</events>
         <properties>
 			<property name="outputDelay"
 					  type="integer"

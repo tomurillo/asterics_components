@@ -57,6 +57,8 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 
 	final IRuntimeOutputPort opOut = new DefaultRuntimeOutputPort();
 
+	final IRuntimeEventTriggererPort etpdataCollected = new DefaultRuntimeEventTriggererPort();
+
 	int propActivePorts = 1;
 	String propKey1 = "key1";
 	String operator1 = "operator1";
@@ -161,7 +163,9 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
      */
     public IRuntimeEventTriggererPort getEventTriggererPort(String eventPortID)
     {
-
+		if ("dataCollected".equalsIgnoreCase(eventPortID)) {
+			return etpdataCollected;
+		}
         return null;
     }
 		
@@ -317,6 +321,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				ipIn1ready = true;
 				if (allReady()) {
 					startTime = System.currentTimeMillis();
+					etpdataCollected.raiseEvent();
 					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
 					resetBuffers();
 				}
@@ -333,6 +338,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				ipIn2ready = true;
 				if (allReady()) {
 					startTime = System.currentTimeMillis();
+					etpdataCollected.raiseEvent();
 					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
 					resetBuffers();
 				}
@@ -349,6 +355,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				ipIn3ready = true;
 				if (allReady()) {
 					startTime = System.currentTimeMillis();
+					etpdataCollected.raiseEvent();
 					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
 					resetBuffers();
 				}
@@ -365,6 +372,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				ipIn4ready = true;
 				if (allReady()) {
 					startTime = System.currentTimeMillis();
+					etpdataCollected.raiseEvent();
 					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
 					resetBuffers();
 				}
@@ -381,6 +389,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				ipIn5ready = true;
 				if (allReady()) {
 					startTime = System.currentTimeMillis();
+					etpdataCollected.raiseEvent();
 					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
 					resetBuffers();
 				}
