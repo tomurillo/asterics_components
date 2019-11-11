@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<componentTypes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="bundle_model.xsd">
+
+    <componentType id="asterics.LongestFixationPos"
+                   canonical_name="eu.asterics.component.processor.longestfixationpos.LongestFixationPosInstance">
+        <type subtype="Others">processor</type>
+        <singleton>false</singleton>
+        <description>Output the eye gaze coordinates of the longest received fixation</description>
+        <ports>
+			<inputPort id="fixationTime">
+				<description>current fixation duration</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
+			<inputPort id="gazeXin">
+				<description>current gaze x coordinate</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
+			<inputPort id="gazeYin">
+				<description>current gaze y coordinate</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
+
+			<outputPort id="gazeXout">
+				<description>x coordinate of longest fixation</description>
+				<dataType>integer</dataType>
+			</outputPort>
+			<outputPort id="gazeYout">
+				<description>y coordinate of longest fixation</description>
+				<dataType>integer</dataType>
+			</outputPort>
+
+        </ports>
+		<events>
+			<eventListenerPort id="sendAndReset">
+				<description>send gaze coordinates of longest fixation recorded so far through output ports</description>
+			</eventListenerPort>
+
+
+		</events>			
+        <properties>
+			<property name="ignoreFixation"
+				type="boolean"
+				value="false"
+				description="Ignore fixation duration; just reroute gaze coordinates "/>
+
+        </properties>
+
+    </componentType>
+</componentTypes>
