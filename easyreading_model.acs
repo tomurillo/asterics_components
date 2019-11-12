@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_10_9_14_46" version="20130320">
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_11_12_16_11" version="20130320">
   <components>
     <component id="TextArea.RRIntervallDoubleFromString" type_id="asterics.TextArea">
       <description>GUI component, which displays text.</description>
@@ -156,8 +156,8 @@ The event trigger port fires at successful extraction which is also the case for
         <posY>624</posY>
       </layout>
       <gui>
-        <posX>4856</posX>
-        <posY>667</posY>
+        <posX>4947</posX>
+        <posY>676</posY>
         <width>1250</width>
         <height>2333</height>
       </gui>
@@ -501,8 +501,8 @@ The event trigger port fires at successful extraction which is also the case for
         <posY>1647</posY>
       </layout>
       <gui>
-        <posX>3051</posX>
-        <posY>3010</posY>
+        <posX>3072</posX>
+        <posY>3121</posY>
         <width>3062</width>
         <height>556</height>
       </gui>
@@ -618,7 +618,7 @@ The event trigger port fires at successful extraction which is also the case for
         <posY>624</posY>
       </layout>
       <gui>
-        <posX>3051</posX>
+        <posX>3135</posX>
         <posY>676</posY>
         <width>1812</width>
         <height>1333</height>
@@ -1093,8 +1093,8 @@ plus the absolute UNIX timestamp in ms. The time zone of the local system is use
         <posY>1079</posY>
       </layout>
       <gui>
-        <posX>3051</posX>
-        <posY>2121</posY>
+        <posX>3072</posX>
+        <posY>2454</posY>
         <width>1812</width>
         <height>556</height>
       </gui>
@@ -2817,8 +2817,8 @@ The algorithm terminates with not firing any detection event, if the start of th
       </ports>
       <properties />
       <layout>
-        <posX>3030</posX>
-        <posY>14</posY>
+        <posX>3092</posX>
+        <posY>20</posY>
       </layout>
     </component>
     <component id="blinkRateHz to String" type_id="asterics.DoubleToString">
@@ -3152,8 +3152,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="FilePath" value="./data/json_collect_recordings" />
       </properties>
       <layout>
-        <posX>3035</posX>
-        <posY>181</posY>
+        <posX>2989</posX>
+        <posY>108</posY>
       </layout>
     </component>
     <component id="WriteCSV JSON.1" type_id="asterics.WriteCSV">
@@ -3168,8 +3168,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="FilePath" value="./data/json_collect_recordings" />
       </properties>
       <layout>
-        <posX>2428</posX>
-        <posY>45</posY>
+        <posX>2583</posX>
+        <posY>1</posY>
       </layout>
     </component>
     <component id="DataCollector_5s" type_id="asterics.DataCollector">
@@ -3188,6 +3188,15 @@ The algorithm terminates with not firing any detection event, if the start of th
           <properties />
         </inputPort>
         <inputPort portTypeID="in5">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeX">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeY">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="fixation">
           <properties />
         </inputPort>
         <outputPort portTypeID="out">
@@ -3209,11 +3218,11 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="operator5" value="none" />
       </properties>
       <layout>
-        <posX>2637</posX>
-        <posY>41</posY>
+        <posX>2839</posX>
+        <posY>17</posY>
       </layout>
     </component>
-    <component id="DataCollector_all" type_id="asterics.DataCollector">
+    <component id="DataCollector_All" type_id="asterics.DataCollector">
       <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
       <ports>
         <inputPort portTypeID="in1">
@@ -3229,6 +3238,15 @@ The algorithm terminates with not firing any detection event, if the start of th
           <properties />
         </inputPort>
         <inputPort portTypeID="in5">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeX">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeY">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="fixation">
           <properties />
         </inputPort>
         <outputPort portTypeID="out">
@@ -3250,8 +3268,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="operator5" value="none" />
       </properties>
       <layout>
-        <posX>2208</posX>
-        <posY>36</posY>
+        <posX>2400</posX>
+        <posY>1</posY>
       </layout>
     </component>
   </components>
@@ -4266,16 +4284,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="input2" />
       </target>
     </channel>
-    <channel id="binding.156">
-      <source>
-        <component id="ConstantDispatcher.RateTrendUpDown" />
-        <port id="output" />
-      </source>
-      <target>
-        <component id="DataCollector_5s" />
-        <port id="in3" />
-      </target>
-    </channel>
     <channel id="binding.136">
       <source>
         <component id="Tobii Eyes Fixation &amp; Position" />
@@ -4286,14 +4294,24 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="input" />
       </target>
     </channel>
-    <channel id="binding.154">
+    <channel id="binding.150">
       <source>
-        <component id="BlinkChangeDetector_CameraSource" />
-        <port id="blinkDurationMs" />
+        <component id="DataCollector_5s" />
+        <port id="out" />
       </source>
       <target>
-        <component id="DataCollector_5s" />
-        <port id="in2" />
+        <component id="WriteCSV JSON" />
+        <port id="Input" />
+      </target>
+    </channel>
+    <channel id="binding.152">
+      <source>
+        <component id="DataCollector_All" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="WriteCSV JSON.1" />
+        <port id="Input" />
       </target>
     </channel>
     <channel id="binding.149">
@@ -4306,14 +4324,44 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="InA" />
       </target>
     </channel>
-    <channel id="binding.153">
+    <channel id="binding.161">
       <source>
-        <component id="BlinkChangeDetector_CameraSource" />
-        <port id="blinkDurationMs" />
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
       </source>
       <target>
-        <component id="DataCollector_all" />
-        <port id="in2" />
+        <component id="DataCollector_5s" />
+        <port id="in1" />
+      </target>
+    </channel>
+    <channel id="binding.158">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeY" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="gazeY" />
+      </target>
+    </channel>
+    <channel id="binding.157">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeX" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="gazeX" />
+      </target>
+    </channel>
+    <channel id="binding.160">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="fixation" />
       </target>
     </channel>
     <channel id="binding.155">
@@ -4322,48 +4370,78 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="output" />
       </source>
       <target>
-        <component id="DataCollector_all" />
+        <component id="DataCollector_5s" />
         <port id="in3" />
       </target>
     </channel>
-    <channel id="binding.152">
+    <channel id="binding.153">
       <source>
-        <component id="DataCollector_all" />
-        <port id="out" />
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
       </source>
       <target>
-        <component id="WriteCSV JSON.1" />
-        <port id="Input" />
+        <component id="DataCollector_5s" />
+        <port id="in2" />
+      </target>
+    </channel>
+    <channel id="binding.154">
+      <source>
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in1" />
+      </target>
+    </channel>
+    <channel id="binding.156">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in2" />
       </target>
     </channel>
     <channel id="binding.159">
       <source>
-        <component id="TrendChangeDetector.1" />
+        <component id="ConstantDispatcher.RateTrendUpDown" />
         <port id="output" />
       </source>
       <target>
-        <component id="DataCollector_5s" />
-        <port id="in1" />
+        <component id="DataCollector_All" />
+        <port id="in3" />
       </target>
     </channel>
-    <channel id="binding.160">
+    <channel id="binding.166">
       <source>
-        <component id="TrendChangeDetector.1" />
-        <port id="output" />
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeX" />
       </source>
       <target>
-        <component id="DataCollector_all" />
-        <port id="in1" />
+        <component id="DataCollector_All" />
+        <port id="gazeX" />
       </target>
     </channel>
-    <channel id="binding.150">
+    <channel id="binding.167">
       <source>
-        <component id="DataCollector_5s" />
-        <port id="out" />
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeY" />
       </source>
       <target>
-        <component id="WriteCSV JSON" />
-        <port id="Input" />
+        <component id="DataCollector_All" />
+        <port id="gazeY" />
+      </target>
+    </channel>
+    <channel id="binding.168">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="fixation" />
       </target>
     </channel>
   </channels>
