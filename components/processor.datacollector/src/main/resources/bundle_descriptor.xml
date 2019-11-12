@@ -33,6 +33,21 @@
 				<mustBeConnected>false</mustBeConnected>
 				<dataType>double</dataType>
 			</inputPort>
+			<inputPort id="gazeX">
+				<description>Gaze X coordinate</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
+			<inputPort id="gazeY">
+				<description>Gaze Y coordinate</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
+			<inputPort id="fixation">
+				<description>Current fixation duration, in ms</description>
+				<mustBeConnected>false</mustBeConnected>
+				<dataType>integer</dataType>
+			</inputPort>
 
 			<outputPort id="out">
 				<description>output combined signals</description>
@@ -95,7 +110,6 @@
 					  type="string"
 					  value="none"
 					  description="Operator to apply to incoming port 5 signals"/>
-
         </properties>
 
     </componentType>

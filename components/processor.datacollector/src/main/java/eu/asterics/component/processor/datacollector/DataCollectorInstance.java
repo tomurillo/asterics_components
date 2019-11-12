@@ -90,6 +90,11 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	int count5 = 0;
 	boolean allReady = false; // All ports have already received at least one value; collectors have useful data
 	long startTime = 0L;
+	double longestFixation = -1.0;
+	int latestX = -1;
+	int latestY = -1;
+	int longestX = -1;
+	int longestY = -1;
 
    /**
     * Class constructor.
@@ -125,6 +130,18 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		if ("in5".equalsIgnoreCase(portID))
 		{
 			return ipIn5;
+		}
+		if ("gazeX".equalsIgnoreCase(portID))
+		{
+			return ipGazeX;
+		}
+		if ("gazeY".equalsIgnoreCase(portID))
+		{
+			return ipGazeY;
+		}
+		if ("fixation".equalsIgnoreCase(portID))
+		{
+			return ipFixation;
 		}
 
 		return null;
@@ -304,9 +321,14 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			operator5 = (String)newValue;
 			return oldValue;
 		}
-
         return null;
     }
+
+    protected void checkForFixation(String propKey, double value) {
+		if (propKey != null && value >= longestFixation) {
+			longestFixation = value;
+		}
+	}
 
      /**
       * Input Ports for receiving values.
@@ -396,6 +418,39 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			}
 		}
 	};
+	private final IRuntimeInputPort ipGazeX  = new DefaultRuntimeInputPort()
+	{
+		public void receiveData(byte[] data)
+		{
+			final int in = ConversionUtils.intFromBytes(data);
+			if (in >= 0) {
+				latestX = in;
+			}
+		}
+	};
+	private final IRuntimeInputPort ipGazeY  = new DefaultRuntimeInputPort()
+	{
+		public void receiveData(byte[] data)
+		{
+			final int in = ConversionUtils.intFromBytes(data);
+			if (in >= 0) {
+				latestY = in;
+			}
+		}
+	};
+
+	private final IRuntimeInputPort ipFixation  = new DefaultRuntimeInputPort()
+	{
+		public void receiveData(byte[] data)
+		{
+			final int in = ConversionUtils.intFromBytes(data);
+			if (in > 0 && in >= longestFixation) {
+				longestFixation = in;
+				longestX = latestX;
+				longestY = latestY;
+			}
+		}
+	};
 
 	/**
 	 * Utility methods
@@ -478,6 +533,11 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		count4 = 0;
 		ipIn5collector = 0;
 		count5 = 0;
+		latestX = -1;
+		latestY = -1;
+		longestX = -1;
+		longestY = -1;
+		longestFixation = -1;
 	}
 
 	private String combineInputs() {
@@ -497,10 +557,15 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			String fullTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(timeStamp));
 			retString = "{\"timestamp\":\"".concat(fullTimeStamp);
 			retString = retString.concat("\",\"");
-			retString = retString.concat(propKey1);
 		} else {
-			retString = "{\"".concat(propKey1);
+			retString = "{";
 		}
+		retString = retString.concat("\"gazeX\":\"");
+		retString = retString.concat(String.format("%d", longestX));
+		retString = retString.concat("\",\"gazeY\":\"");
+		retString = retString.concat(String.format("%d", longestY));
+		retString = retString.concat("\",\"");
+		retString = retString.concat(propKey1);
 		retString = retString.concat("\":");
 		retString = retString.concat(String.format("%f", ipIn1collector));
 		if (propActivePorts > 1) {
