@@ -423,9 +423,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final int in = ConversionUtils.intFromBytes(data);
-			if (in >= 0) {
-				latestX = in;
-			}
+			latestX = in;
 		}
 	};
 	private final IRuntimeInputPort ipGazeY  = new DefaultRuntimeInputPort()
@@ -433,9 +431,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		public void receiveData(byte[] data)
 		{
 			final int in = ConversionUtils.intFromBytes(data);
-			if (in >= 0) {
-				latestY = in;
-			}
+			latestY = in;
 		}
 	};
 
