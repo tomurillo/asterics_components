@@ -552,7 +552,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		if (timeStamp > 0) {
 			String fullTimeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp(timeStamp));
 			retString = "{\"timestamp\":\"".concat(fullTimeStamp);
-			retString = retString.concat("\",\"");
+			retString = retString.concat("\",");
 		} else {
 			retString = "{";
 		}
