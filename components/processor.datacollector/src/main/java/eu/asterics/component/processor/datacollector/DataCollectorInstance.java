@@ -71,10 +71,11 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	String propKey5 = "key5";
 	String operator5 = "operator5";
 	int outputDelay = DEFAULT_DELAY;
+	boolean waitForAll = false;
 
 	// Member variables
 	double ipIn1collector = 0; // Collects latest received value from port 1
-	boolean ipIn1ready = false; // True if value received from port 1 needs to be sent out
+	boolean ipIn1ready = false; // True if value received from port 1 can be sent out
 	int count1 = 0; // Number of received discrete values from port 1
 	double ipIn2collector = 0;
 	boolean ipIn2ready = false;
@@ -200,6 +201,10 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			return propActivePorts;
 		}
+		else if ("waitForAll".equalsIgnoreCase(propertyName))
+		{
+			return waitForAll;
+		}
 		else if ("key1".equalsIgnoreCase(propertyName))
 		{
 			return propKey1;
@@ -259,6 +264,12 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final Object oldValue = propActivePorts;
 			propActivePorts = Integer.parseInt(newValue.toString());
+			return oldValue;
+		}
+		else if ("waitForAll".equalsIgnoreCase(propertyName))
+		{
+			final Object oldValue = waitForAll;
+			waitForAll = Boolean.parseBoolean((String) newValue);
 			return oldValue;
 		}
 		else if ("key1".equalsIgnoreCase(propertyName))
@@ -341,12 +352,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn1collector = applyOperator(ipIn1collector, ++count1, in, operator1);
 				ipIn1ready = true;
-				if (allReady()) {
-					startTime = System.currentTimeMillis();
-					etpdataCollected.raiseEvent();
-					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
-					resetBuffers();
-				}
+				sendOutputIfReady();
 			}
 		}
 	};
@@ -358,12 +364,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn2collector = applyOperator(ipIn2collector, ++count2, in, operator2);
 				ipIn2ready = true;
-				if (allReady()) {
-					startTime = System.currentTimeMillis();
-					etpdataCollected.raiseEvent();
-					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
-					resetBuffers();
-				}
+				sendOutputIfReady();
 			}
 		}
 	};
@@ -375,12 +376,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn3collector = applyOperator(ipIn3collector, ++count3, in, operator3);
 				ipIn3ready = true;
-				if (allReady()) {
-					startTime = System.currentTimeMillis();
-					etpdataCollected.raiseEvent();
-					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
-					resetBuffers();
-				}
+				sendOutputIfReady();
 			}
 		}
 	};
@@ -392,12 +388,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn4collector = applyOperator(ipIn4collector, ++count4, in, operator4);
 				ipIn4ready = true;
-				if (allReady()) {
-					startTime = System.currentTimeMillis();
-					etpdataCollected.raiseEvent();
-					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
-					resetBuffers();
-				}
+				sendOutputIfReady();
 			}
 		}
 	};
@@ -409,12 +400,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn5collector = applyOperator(ipIn5collector, ++count5, in, operator5);
 				ipIn5ready = true;
-				if (allReady()) {
-					startTime = System.currentTimeMillis();
-					etpdataCollected.raiseEvent();
-					opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
-					resetBuffers();
-				}
+				sendOutputIfReady();
 			}
 		}
 	};
@@ -452,29 +438,57 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	 * Utility methods
 	 */
 
+
+	private void sendOutputIfReady() {
+		if (allReady()) {
+			startTime = System.currentTimeMillis();
+			etpdataCollected.raiseEvent();
+			opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+			resetBuffers();
+		}
+	}
+
 	/**
 	 * Returns whether all input ports are ready i.e. every port has already received at least one value
 	 * and whether enough time has passed for data to be sent out
 	 * @return
 	 */
 	private boolean allReady() {
-		if (!allReady && propActivePorts > 0) {
-			boolean ready = false;
-			ready = ipIn1ready;
-			if (ready && propActivePorts > 1) {
-				ready = ipIn2ready;
+		boolean ready = false;
+		if (waitForAll) {
+			if (!allReady && propActivePorts > 0) {
+				ready = ipIn1ready;
+				if (ready && propActivePorts > 1) {
+					ready = ipIn2ready;
+				}
+				if (ready && propActivePorts > 2) {
+					ready = ipIn3ready;
+				}
+				if (ready && propActivePorts > 3) {
+					ready = ipIn4ready;
+				}
+				if (ready && propActivePorts > 4) {
+					ready = ipIn5ready;
+				}
 			}
-			if (ready && propActivePorts > 2) {
-				ready = ipIn3ready;
+		} else {
+			if (propActivePorts > 0) {
+				ready = ipIn1ready;
+				if (!ready && propActivePorts > 1) {
+					ready = ipIn2ready;
+				}
+				if (!ready && propActivePorts > 2) {
+					ready = ipIn3ready;
+				}
+				if (!ready && propActivePorts > 3) {
+					ready = ipIn4ready;
+				}
+				if (!ready && propActivePorts > 4) {
+					ready = ipIn5ready;
+				}
 			}
-			if (ready && propActivePorts > 3) {
-				ready = ipIn4ready;
-			}
-			if (ready && propActivePorts > 4) {
-				ready = ipIn5ready;
-			}
-			allReady = ready;
 		}
+		allReady = ready;
 		if (allReady && this.outputDelay > 0) {
 			long endTime = System.currentTimeMillis();
 			if (endTime - this.startTime < this.outputDelay) {
@@ -563,27 +577,47 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		retString = retString.concat("\",\"");
 		retString = retString.concat(propKey1);
 		retString = retString.concat("\":");
-		retString = retString.concat(String.format("%f", ipIn1collector));
+		if (!waitForAll && !ipIn1ready) {
+			retString = retString.concat("\"no_data\"");
+		} else {
+			retString = retString.concat(String.format("%f", ipIn1collector));
+		}
 		if (propActivePorts > 1) {
 			retString = retString.concat(",\"");
 			retString = retString.concat(propKey2);
 			retString = retString.concat("\":");
-			retString = retString.concat(String.format("%f", ipIn2collector));
+			if (!waitForAll && !ipIn2ready) {
+				retString = retString.concat("\"no_data\"");
+			} else {
+				retString = retString.concat(String.format("%f", ipIn2collector));
+			}
 			if (propActivePorts > 2) {
 				retString = retString.concat(",\"");
 				retString = retString.concat(propKey3);
 				retString = retString.concat("\":");
-				retString = retString.concat(String.format("%f", ipIn3collector));
+				if (!waitForAll && !ipIn3ready) {
+					retString = retString.concat("\"no_data\"");
+				} else {
+					retString = retString.concat(String.format("%f", ipIn3collector));
+				}
 				if (propActivePorts > 3) {
 					retString = retString.concat(",\"");
 					retString = retString.concat(propKey4);
 					retString = retString.concat("\":");
-					retString = retString.concat(String.format("%f", ipIn4collector));
+					if (!waitForAll && !ipIn4ready) {
+						retString = retString.concat("\"no_data\"");
+					} else {
+						retString = retString.concat(String.format("%f", ipIn4collector));
+					}
 					if (propActivePorts > 4) {
 						retString = retString.concat(",\"");
 						retString = retString.concat(propKey5);
 						retString = retString.concat("\":");
-						retString = retString.concat(String.format("%f", ipIn5collector));
+						if (!waitForAll && !ipIn5ready) {
+							retString = retString.concat("\"no_data\"");
+						} else {
+							retString = retString.concat(String.format("%f", ipIn5collector));
+						}
 					}
 				}
 			}

@@ -6,7 +6,7 @@
                    canonical_name="eu.asterics.component.processor.datacollector.DataCollectorInstance">
         <type subtype="Others">processor</type>
         <singleton>false</singleton>
-        <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+        <description>Combines the given inputs into a single output JSON object</description>
         <ports>
 			<inputPort id="in1">
 				<description>Input signal 1</description>
@@ -70,6 +70,10 @@
 				type="integer"
 				value="1"
 				description="Number of input ports that are considered"/>
+			<property name="waitForAll"
+					  type="boolean"
+					  value="false"
+					  description="If true, no output will be generated until inputs from all active ports have been received"/>
 			<property name="key1"
 				type="string"
 				value="key1"
