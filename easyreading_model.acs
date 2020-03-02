@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2019_11_12_16_11" version="20130320">
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelName="C:\Users\tomas\Documents\easyreading_model.acs_2020_3_2_13_45" version="20130320">
   <components>
     <component id="TextArea.RRIntervallDoubleFromString" type_id="asterics.TextArea">
       <description>GUI component, which displays text.</description>
@@ -25,7 +25,7 @@
       </properties>
       <layout>
         <posX>758</posX>
-        <posY>607</posY>
+        <posY>676</posY>
       </layout>
       <gui>
         <posX>197</posX>
@@ -46,8 +46,8 @@
       </ports>
       <properties />
       <layout>
-        <posX>709</posX>
-        <posY>414</posY>
+        <posX>723</posX>
+        <posY>446</posY>
       </layout>
     </component>
     <component id="Oscilloscope.RRIntervall" type_id="asterics.Oscilloscope">
@@ -103,8 +103,8 @@
         <property name="defaultValue" value="" />
       </properties>
       <layout>
-        <posX>0</posX>
-        <posY>23</posY>
+        <posX>121</posX>
+        <posY>45</posY>
       </layout>
     </component>
     <component id="Extract_Error_Tags_NOT_NEEDED" type_id="asterics.StringExtractor">
@@ -152,12 +152,12 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="displayGUI" value="True" />
       </properties>
       <layout>
-        <posX>565</posX>
-        <posY>624</posY>
+        <posX>612</posX>
+        <posY>622</posY>
       </layout>
       <gui>
-        <posX>4947</posX>
-        <posY>676</posY>
+        <posX>1635</posX>
+        <posY>3787</posY>
         <width>1250</width>
         <height>2333</height>
       </gui>
@@ -191,7 +191,7 @@ The event trigger port fires at successful extraction which is also the case for
       </properties>
       <layout>
         <posX>0</posX>
-        <posY>380</posY>
+        <posY>344</posY>
       </layout>
     </component>
     <component id="Tobii Eyes Fixation &amp; Position" type_id="asterics.EyeX">
@@ -234,8 +234,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="offsetCorrectionMode" value="1" />
       </properties>
       <layout>
-        <posX>236</posX>
-        <posY>1555</posY>
+        <posX>349</posX>
+        <posY>1468</posY>
       </layout>
     </component>
     <component id="EventVisualizer.TrackerFixationsAndBlinks" type_id="asterics.EventVisualizer">
@@ -303,8 +303,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="displayGUI" value="true" />
       </properties>
       <layout>
-        <posX>544</posX>
-        <posY>1379</posY>
+        <posX>545</posX>
+        <posY>1834</posY>
       </layout>
       <gui>
         <posX>3051</posX>
@@ -344,8 +344,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="displayGUI" value="true" />
       </properties>
       <layout>
-        <posX>234</posX>
-        <posY>1828</posY>
+        <posX>213</posX>
+        <posY>1832</posY>
       </layout>
       <gui>
         <posX>3051</posX>
@@ -375,8 +375,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="threshold2" value="10" />
       </properties>
       <layout>
-        <posX>427</posX>
-        <posY>1830</posY>
+        <posX>383</posX>
+        <posY>1840</posY>
       </layout>
     </component>
     <component id="Concatenate EyeEvents" type_id="asterics.MultiSourceString">
@@ -441,71 +441,6 @@ The event trigger port fires at successful extraction which is also the case for
         <posX>1134</posX>
         <posY>1887</posY>
       </layout>
-    </component>
-    <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" type_id="asterics.ButtonGrid">
-      <description>Keyboard which sends event after button press</description>
-      <ports />
-      <properties>
-        <property name="caption" value="Fixation Time Threshold" />
-        <property name="horizontalOrientation" value="True" />
-        <property name="textColor" value="13" />
-        <property name="backgroundColor" value="13" />
-        <property name="borderColor" value="13" />
-        <property name="borderThickness" value="1" />
-        <property name="selectionFrameColor" value="13" />
-        <property name="selectionFrameThickness" value="1" />
-        <property name="displayGUI" value="True" />
-        <property name="buttonCaption1" value="Calibrate" />
-        <property name="buttonCaption2" value="Start Eye Mouse" />
-        <property name="buttonCaption3" value="Stop Eye Mouse" />
-        <property name="buttonCaption4" value="" />
-        <property name="buttonCaption5" value="" />
-        <property name="buttonCaption6" value="" />
-        <property name="buttonCaption7" value="" />
-        <property name="buttonCaption8" value="" />
-        <property name="buttonCaption9" value="" />
-        <property name="buttonCaption10" value="" />
-        <property name="buttonCaption11" value="" />
-        <property name="buttonCaption12" value="" />
-        <property name="buttonCaption13" value="" />
-        <property name="buttonCaption14" value="" />
-        <property name="buttonCaption15" value="" />
-        <property name="buttonCaption16" value="" />
-        <property name="buttonCaption17" value="" />
-        <property name="buttonCaption18" value="" />
-        <property name="buttonCaption19" value="" />
-        <property name="buttonCaption20" value="" />
-        <property name="toolTip1" value="" />
-        <property name="toolTip2" value="" />
-        <property name="toolTip3" value="" />
-        <property name="toolTip4" value="" />
-        <property name="toolTip5" value="" />
-        <property name="toolTip6" value="" />
-        <property name="toolTip7" value="" />
-        <property name="toolTip8" value="" />
-        <property name="toolTip9" value="" />
-        <property name="toolTip10" value="" />
-        <property name="toolTip11" value="" />
-        <property name="toolTip12" value="" />
-        <property name="toolTip13" value="" />
-        <property name="toolTip14" value="" />
-        <property name="toolTip15" value="" />
-        <property name="toolTip16" value="" />
-        <property name="toolTip17" value="" />
-        <property name="toolTip18" value="" />
-        <property name="toolTip19" value="" />
-        <property name="toolTip20" value="" />
-      </properties>
-      <layout>
-        <posX>10</posX>
-        <posY>1647</posY>
-      </layout>
-      <gui>
-        <posX>3072</posX>
-        <posY>3121</posY>
-        <width>3062</width>
-        <height>556</height>
-      </gui>
     </component>
     <component id="Output Both Blink and Fixation Events" type_id="asterics.MultiSourceString">
       <description>Passes strings from input ports to the one output port</description>
@@ -618,8 +553,8 @@ The event trigger port fires at successful extraction which is also the case for
         <posY>624</posY>
       </layout>
       <gui>
-        <posX>3135</posX>
-        <posY>676</posY>
+        <posX>197</posX>
+        <posY>4232</posY>
         <width>1812</width>
         <height>1333</height>
       </gui>
@@ -926,8 +861,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="displayGUI" value="False" />
       </properties>
       <layout>
-        <posX>359</posX>
-        <posY>238</posY>
+        <posX>364</posX>
+        <posY>31</posY>
       </layout>
       <gui>
         <posX>6197</posX>
@@ -1093,8 +1028,8 @@ plus the absolute UNIX timestamp in ms. The time zone of the local system is use
         <posY>1079</posY>
       </layout>
       <gui>
-        <posX>3072</posX>
-        <posY>2454</posY>
+        <posX>1072</posX>
+        <posY>4232</posY>
         <width>1812</width>
         <height>556</height>
       </gui>
@@ -1331,8 +1266,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="endDelimiter" value="]" />
       </properties>
       <layout>
-        <posX>312</posX>
-        <posY>416</posY>
+        <posX>435</posX>
+        <posY>440</posY>
       </layout>
     </component>
     <component id="EventGenerator.SendTimestampPerInterval.2" type_id="asterics.EventGenerator">
@@ -1544,8 +1479,8 @@ The event trigger port fires at successful extraction which is also the case for
         <property name="trim" value="false" />
       </properties>
       <layout>
-        <posX>1026</posX>
-        <posY>1597</posY>
+        <posX>1359</posX>
+        <posY>1539</posY>
       </layout>
     </component>
     <component id="StringExpander.EyePosXYTimeCommas" type_id="asterics.StringExpander">
@@ -1650,7 +1585,7 @@ The event trigger port fires at successful extraction which is also the case for
         <posY>1118</posY>
       </layout>
     </component>
-    <component id="StringExpander.GazeYCommas" type_id="asterics.StringExpander">
+    <component id="StringExpander.GazeXCommas" type_id="asterics.StringExpander">
       <description>Adds the preString and postString strings to the incoming string and sends the new string to the output port.</description>
       <ports>
         <inputPort portTypeID="input" sync="true">
@@ -2437,79 +2372,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         <height>3111</height>
       </gui>
     </component>
-    <component id="Mouse" type_id="asterics.Mouse">
-      <description>Local mouse actuator, emulates mouse activity on local system</description>
-      <ports>
-        <inputPort portTypeID="mouseX">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="mouseY">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="action">
-          <properties />
-        </inputPort>
-        <outputPort portTypeID="outX">
-          <properties />
-        </outputPort>
-        <outputPort portTypeID="outY">
-          <properties />
-        </outputPort>
-      </ports>
-      <properties>
-        <property name="enableMouse" value="False" />
-        <property name="absolutePosition" value="True" />
-        <property name="startCentered" value="true" />
-        <property name="xMin" value="0" />
-        <property name="xMax" value="0" />
-        <property name="yMin" value="0" />
-        <property name="yMax" value="0" />
-      </properties>
-      <layout>
-        <posX>406</posX>
-        <posY>1378</posY>
-      </layout>
-    </component>
-    <component id="EventCascade.PlaceMouseAndClick" type_id="asterics.EventCascade">
-      <description>allows to specify a sequence of events with arbitrary delay times and loops</description>
-      <ports />
-      <properties>
-        <property name="activeTriggers" value="4" />
-        <property name="loops" value="1" />
-        <property name="autoStart" value="false" />
-        <property name="delayBeforeTrigger1" value="5" />
-        <property name="delayBeforeTrigger2" value="5" />
-        <property name="delayBeforeTrigger3" value="5" />
-        <property name="delayBeforeTrigger4" value="5" />
-        <property name="delayBeforeTrigger5" value="500" />
-        <property name="delayBeforeTrigger6" value="500" />
-        <property name="delayBeforeTrigger7" value="500" />
-        <property name="delayBeforeTrigger8" value="500" />
-        <property name="delayBeforeTrigger9" value="500" />
-        <property name="delayBeforeTrigger10" value="500" />
-        <property name="delayBeforeTrigger11" value="500" />
-        <property name="delayBeforeTrigger12" value="500" />
-        <property name="delayBeforeTrigger13" value="500" />
-        <property name="delayBeforeTrigger14" value="500" />
-        <property name="delayBeforeTrigger15" value="500" />
-      </properties>
-      <layout>
-        <posX>164</posX>
-        <posY>1388</posY>
-      </layout>
-    </component>
-    <component id="EventBlock.BlockEyeMouseActivate" type_id="asterics.EventBlock">
-      <description>Pass or block event</description>
-      <ports />
-      <properties>
-        <property name="block" value="False" />
-        <property name="blockAfterEvent" value="false" />
-      </properties>
-      <layout>
-        <posX>0</posX>
-        <posY>1379</posY>
-      </layout>
-    </component>
     <component id="Comparator.RRIAreNotEqual" type_id="asterics.Comparator">
       <description>Comparator for two inputs</description>
       <ports>
@@ -2585,7 +2447,7 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="expression" value="abs(a-b)" />
       </properties>
       <layout>
-        <posX>753</posX>
+        <posX>751</posX>
         <posY>198</posY>
       </layout>
     </component>
@@ -2688,22 +2550,56 @@ The algorithm terminates with not firing any detection event, if the start of th
         <height>667</height>
       </gui>
     </component>
-    <component id="EventVisualizer.DifferenceBetween2RRI_NOT_NEEDED" type_id="asterics.EventVisualizer">
-      <description>Are the 2 previous RRI's different</description>
-      <ports />
+    <component id="DataCollector_5s" type_id="asterics.DataCollector">
+      <description>Combines the given inputs into a single output JSON object</description>
+      <ports>
+        <inputPort portTypeID="in1">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in2">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in3">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in4">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="in5">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeX">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="gazeY">
+          <properties />
+        </inputPort>
+        <inputPort portTypeID="fixation">
+          <properties />
+        </inputPort>
+        <outputPort portTypeID="out">
+          <properties />
+        </outputPort>
+      </ports>
       <properties>
-        <property name="displayGUI" value="False" />
+        <property name="outputDelay" value="5000" />
+        <property name="activePorts" value="5" />
+        <property name="waitForAll" value="False" />
+        <property name="key1" value="fixation_ms" />
+        <property name="operator1" value="avg" />
+        <property name="key2" value="blink_ms" />
+        <property name="operator2" value="avg" />
+        <property name="key3" value="blink_rate" />
+        <property name="operator3" value="none" />
+        <property name="key4" value="HRVRmssd" />
+        <property name="operator4" value="avg" />
+        <property name="key5" value="HR_bpm" />
+        <property name="operator5" value="avg" />
       </properties>
       <layout>
-        <posX>1117</posX>
-        <posY>86</posY>
+        <posX>2844</posX>
+        <posY>64</posY>
       </layout>
-      <gui>
-        <posX>10</posX>
-        <posY>4010</posY>
-        <width>3000</width>
-        <height>1000</height>
-      </gui>
     </component>
     <component id="Route if not equal" type_id="asterics.PathSelector">
       <description>Pathselector routes signal to one of four output ports</description>
@@ -2817,8 +2713,8 @@ The algorithm terminates with not firing any detection event, if the start of th
       </ports>
       <properties />
       <layout>
-        <posX>3092</posX>
-        <posY>20</posY>
+        <posX>3132</posX>
+        <posY>22</posY>
       </layout>
     </component>
     <component id="blinkRateHz to String" type_id="asterics.DoubleToString">
@@ -3120,8 +3016,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="Trigger" value="less_than" />
       </properties>
       <layout>
-        <posX>663</posX>
-        <posY>1823</posY>
+        <posX>743</posX>
+        <posY>1800</posY>
       </layout>
     </component>
     <component id="FixationDuration to String" type_id="asterics.DoubleToString">
@@ -3152,8 +3048,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <property name="FilePath" value="./data/json_collect_recordings" />
       </properties>
       <layout>
-        <posX>2989</posX>
-        <posY>108</posY>
+        <posX>3029</posX>
+        <posY>110</posY>
       </layout>
     </component>
     <component id="WriteCSV JSON.1" type_id="asterics.WriteCSV">
@@ -3172,58 +3068,41 @@ The algorithm terminates with not firing any detection event, if the start of th
         <posY>1</posY>
       </layout>
     </component>
-    <component id="DataCollector_5s" type_id="asterics.DataCollector">
-      <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+    <component id="TextArea JSON" type_id="asterics.TextArea">
+      <description>GUI component, which displays text.</description>
       <ports>
-        <inputPort portTypeID="in1">
+        <inputPort portTypeID="setText">
           <properties />
         </inputPort>
-        <inputPort portTypeID="in2">
+        <inputPort portTypeID="appendText">
           <properties />
         </inputPort>
-        <inputPort portTypeID="in3">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="in4">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="in5">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="gazeX">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="gazeY">
-          <properties />
-        </inputPort>
-        <inputPort portTypeID="fixation">
-          <properties />
-        </inputPort>
-        <outputPort portTypeID="out">
+        <outputPort portTypeID="text">
           <properties />
         </outputPort>
       </ports>
       <properties>
-        <property name="outputDelay" value="5000" />
-        <property name="activePorts" value="3" />
-        <property name="key1" value="fixation_ms" />
-        <property name="operator1" value="avg" />
-        <property name="key2" value="blink_ms" />
-        <property name="operator2" value="avg" />
-        <property name="key3" value="blink_rate" />
-        <property name="operator3" value="none" />
-        <property name="key4" value="key4" />
-        <property name="operator4" value="none" />
-        <property name="key5" value="key5" />
-        <property name="operator5" value="none" />
+        <property name="caption" value="1:1 received" />
+        <property name="default" value="" />
+        <property name="editable" value="True" />
+        <property name="fontSize" value="14" />
+        <property name="textColor" value="0" />
+        <property name="backgroundColor" value="11" />
+        <property name="displayGUI" value="True" />
       </properties>
       <layout>
-        <posX>2839</posX>
-        <posY>17</posY>
+        <posX>3156</posX>
+        <posY>188</posY>
       </layout>
+      <gui>
+        <posX>3072</posX>
+        <posY>565</posY>
+        <width>3125</width>
+        <height>2556</height>
+      </gui>
     </component>
     <component id="DataCollector_All" type_id="asterics.DataCollector">
-      <description>Combines the given inputs into a single output string with sample rate of the highest frequency input signal</description>
+      <description>Combines the given inputs into a single output JSON object</description>
       <ports>
         <inputPort portTypeID="in1">
           <properties />
@@ -3255,21 +3134,22 @@ The algorithm terminates with not firing any detection event, if the start of th
       </ports>
       <properties>
         <property name="outputDelay" value="0" />
-        <property name="activePorts" value="3" />
+        <property name="activePorts" value="5" />
+        <property name="waitForAll" value="True" />
         <property name="key1" value="fixation_ms" />
         <property name="operator1" value="none" />
         <property name="key2" value="blink_ms" />
         <property name="operator2" value="none" />
         <property name="key3" value="blink_rate" />
         <property name="operator3" value="none" />
-        <property name="key4" value="key4" />
+        <property name="key4" value="HRVRmssd" />
         <property name="operator4" value="none" />
-        <property name="key5" value="key5" />
+        <property name="key5" value="HR_bpm" />
         <property name="operator5" value="none" />
       </properties>
       <layout>
-        <posX>2400</posX>
-        <posY>1</posY>
+        <posX>2403</posX>
+        <posY>37</posY>
       </layout>
     </component>
   </components>
@@ -3650,7 +3530,7 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="gazeX" />
       </source>
       <target>
-        <component id="StringExpander.GazeYCommas" />
+        <component id="StringExpander.GazeXCommas" />
         <port id="input" />
       </target>
     </channel>
@@ -3666,7 +3546,7 @@ The algorithm terminates with not firing any detection event, if the start of th
     </channel>
     <channel id="binding.83">
       <source>
-        <component id="StringExpander.GazeYCommas" />
+        <component id="StringExpander.GazeXCommas" />
         <port id="output" />
       </source>
       <target>
@@ -3674,7 +3554,7 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="input" />
       </target>
     </channel>
-    <channel id="binding.102">
+    <channel id="binding.163">
       <source>
         <component id="Write Current Timestamp" />
         <port id="timestampUnixMs" />
@@ -4004,26 +3884,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="in" />
       </target>
     </channel>
-    <channel id="binding.116">
-      <source>
-        <component id="Tobii Eyes Fixation &amp; Position" />
-        <port id="gazeX" />
-      </source>
-      <target>
-        <component id="Mouse" />
-        <port id="mouseX" />
-      </target>
-    </channel>
-    <channel id="binding.117">
-      <source>
-        <component id="Tobii Eyes Fixation &amp; Position" />
-        <port id="gazeY" />
-      </source>
-      <target>
-        <component id="Mouse" />
-        <port id="mouseY" />
-      </target>
-    </channel>
     <channel id="binding.119">
       <source>
         <component id="StringToDouble.COMValues" />
@@ -4300,8 +4160,8 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="out" />
       </source>
       <target>
-        <component id="WriteCSV JSON" />
-        <port id="Input" />
+        <component id="TextArea JSON" />
+        <port id="setText" />
       </target>
     </channel>
     <channel id="binding.152">
@@ -4320,51 +4180,31 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="out" />
       </source>
       <target>
-        <component id="WebSocket.1" />
-        <port id="InA" />
+        <component id="WriteCSV JSON" />
+        <port id="Input" />
       </target>
     </channel>
     <channel id="binding.161">
       <source>
-        <component id="TrendChangeDetector.1" />
-        <port id="output" />
-      </source>
-      <target>
-        <component id="DataCollector_5s" />
-        <port id="in1" />
-      </target>
-    </channel>
-    <channel id="binding.158">
-      <source>
-        <component id="Tobii Eyes Fixation &amp; Position" />
-        <port id="gazeY" />
-      </source>
-      <target>
-        <component id="DataCollector_5s" />
-        <port id="gazeY" />
-      </target>
-    </channel>
-    <channel id="binding.157">
-      <source>
         <component id="Tobii Eyes Fixation &amp; Position" />
         <port id="gazeX" />
       </source>
       <target>
         <component id="DataCollector_5s" />
         <port id="gazeX" />
-      </target>
-    </channel>
-    <channel id="binding.160">
-      <source>
-        <component id="Tobii Eyes Fixation &amp; Position" />
-        <port id="fixationTime" />
-      </source>
-      <target>
-        <component id="DataCollector_5s" />
-        <port id="fixation" />
       </target>
     </channel>
     <channel id="binding.155">
+      <source>
+        <component id="BlinkChangeDetector_CameraSource" />
+        <port id="blinkDurationMs" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="in2" />
+      </target>
+    </channel>
+    <channel id="binding.157">
       <source>
         <component id="ConstantDispatcher.RateTrendUpDown" />
         <port id="output" />
@@ -4376,25 +4216,35 @@ The algorithm terminates with not firing any detection event, if the start of th
     </channel>
     <channel id="binding.153">
       <source>
-        <component id="BlinkChangeDetector_CameraSource" />
-        <port id="blinkDurationMs" />
-      </source>
-      <target>
-        <component id="DataCollector_5s" />
-        <port id="in2" />
-      </target>
-    </channel>
-    <channel id="binding.154">
-      <source>
         <component id="TrendChangeDetector.1" />
         <port id="output" />
       </source>
       <target>
-        <component id="DataCollector_All" />
+        <component id="DataCollector_5s" />
         <port id="in1" />
       </target>
     </channel>
-    <channel id="binding.156">
+    <channel id="binding.158">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="in4" />
+      </target>
+    </channel>
+    <channel id="binding.160">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="in5" />
+      </target>
+    </channel>
+    <channel id="binding.154">
       <source>
         <component id="BlinkChangeDetector_CameraSource" />
         <port id="blinkDurationMs" />
@@ -4406,15 +4256,15 @@ The algorithm terminates with not firing any detection event, if the start of th
     </channel>
     <channel id="binding.159">
       <source>
-        <component id="ConstantDispatcher.RateTrendUpDown" />
-        <port id="output" />
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="gazeY" />
       </source>
       <target>
         <component id="DataCollector_All" />
-        <port id="in3" />
+        <port id="gazeY" />
       </target>
     </channel>
-    <channel id="binding.166">
+    <channel id="binding.156">
       <source>
         <component id="Tobii Eyes Fixation &amp; Position" />
         <port id="gazeX" />
@@ -4430,11 +4280,61 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="gazeY" />
       </source>
       <target>
-        <component id="DataCollector_All" />
+        <component id="DataCollector_5s" />
         <port id="gazeY" />
       </target>
     </channel>
-    <channel id="binding.168">
+    <channel id="binding.166">
+      <source>
+        <component id="MathEvaluator.HR_BPMfromRR" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in5" />
+      </target>
+    </channel>
+    <channel id="binding.165">
+      <source>
+        <component id="HRVRmssdFromRR" />
+        <port id="rmssd" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in4" />
+      </target>
+    </channel>
+    <channel id="binding.116">
+      <source>
+        <component id="DataCollector_5s" />
+        <port id="out" />
+      </source>
+      <target>
+        <component id="WebSocket.1" />
+        <port id="InA" />
+      </target>
+    </channel>
+    <channel id="binding.117">
+      <source>
+        <component id="TrendChangeDetector.1" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in1" />
+      </target>
+    </channel>
+    <channel id="binding.162">
+      <source>
+        <component id="ConstantDispatcher.RateTrendUpDown" />
+        <port id="output" />
+      </source>
+      <target>
+        <component id="DataCollector_All" />
+        <port id="in3" />
+      </target>
+    </channel>
+    <channel id="binding.164">
       <source>
         <component id="Tobii Eyes Fixation &amp; Position" />
         <port id="fixationTime" />
@@ -4444,23 +4344,18 @@ The algorithm terminates with not firing any detection event, if the start of th
         <port id="fixation" />
       </target>
     </channel>
+    <channel id="binding.168">
+      <source>
+        <component id="Tobii Eyes Fixation &amp; Position" />
+        <port id="fixationTime" />
+      </source>
+      <target>
+        <component id="DataCollector_5s" />
+        <port id="fixation" />
+      </target>
+    </channel>
   </channels>
   <eventChannels>
-    <eventChannel id="button1_calibrateCurrentProfile">
-      <description />
-      <sources>
-        <source>
-          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
-          <eventPort id="button1" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="Tobii Eyes Fixation &amp; Position" />
-          <eventPort id="calibrateCurrentProfile" />
-        </target>
-      </targets>
-    </eventChannel>
     <eventChannel id="conditionTrue_eventDisplay">
       <description />
       <sources>
@@ -5166,126 +5061,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         </target>
       </targets>
     </eventChannel>
-    <eventChannel id="button3_block">
-      <description />
-      <sources>
-        <source>
-          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
-          <eventPort id="button3" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventBlock.BlockEyeMouseActivate" />
-          <eventPort id="block" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="conditionTrue_input">
-      <description />
-      <sources>
-        <source>
-          <component id="Compare Fixation time with slider value" />
-          <eventPort id="conditionTrue" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventBlock.BlockEyeMouseActivate" />
-          <eventPort id="input" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="button2_pass">
-      <description />
-      <sources>
-        <source>
-          <component id="ButtonGrid.EyeTrackerCalibrationAndMouse" />
-          <eventPort id="button2" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventBlock.BlockEyeMouseActivate" />
-          <eventPort id="pass" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="trigger1_activate">
-      <description />
-      <sources>
-        <source>
-          <component id="EventCascade.PlaceMouseAndClick" />
-          <eventPort id="trigger1" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="Mouse" />
-          <eventPort id="activate" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="trigger2_absolutePosition">
-      <description />
-      <sources>
-        <source>
-          <component id="EventCascade.PlaceMouseAndClick" />
-          <eventPort id="trigger2" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="Mouse" />
-          <eventPort id="absolutePosition" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="trigger3_leftClick">
-      <description />
-      <sources>
-        <source>
-          <component id="EventCascade.PlaceMouseAndClick" />
-          <eventPort id="trigger3" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="Mouse" />
-          <eventPort id="leftClick" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="trigger4_deactivate">
-      <description />
-      <sources>
-        <source>
-          <component id="EventCascade.PlaceMouseAndClick" />
-          <eventPort id="trigger4" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="Mouse" />
-          <eventPort id="deactivate" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="output_startCascade">
-      <description />
-      <sources>
-        <source>
-          <component id="EventBlock.BlockEyeMouseActivate" />
-          <eventPort id="output" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventCascade.PlaceMouseAndClick" />
-          <eventPort id="startCascade" />
-        </target>
-      </targets>
-    </eventChannel>
     <eventChannel id="button1_resetCalculation">
       <description />
       <sources>
@@ -5313,21 +5088,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         <target>
           <component id="Send succesive values to different ports" />
           <eventPort id="selectNext" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="conditionTrue_eventDisplay">
-      <description />
-      <sources>
-        <source>
-          <component id="Comparator.RRIAreNotEqual" />
-          <eventPort id="conditionTrue" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventVisualizer.DifferenceBetween2RRI_NOT_NEEDED" />
-          <eventPort id="eventDisplay" />
         </target>
       </targets>
     </eventChannel>
@@ -5388,21 +5148,6 @@ The algorithm terminates with not firing any detection event, if the start of th
         <target>
           <component id="PathMultiplexer.RMSSDOsciSyncer" />
           <eventPort id="passPort1" />
-        </target>
-      </targets>
-    </eventChannel>
-    <eventChannel id="output_block">
-      <description />
-      <sources>
-        <source>
-          <component id="AutostartEvent.BlockEyeMouse" />
-          <eventPort id="output" />
-        </source>
-      </sources>
-      <targets>
-        <target>
-          <component id="EventBlock.BlockEyeMouseActivate" />
-          <eventPort id="block" />
         </target>
       </targets>
     </eventChannel>
