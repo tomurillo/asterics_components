@@ -31,6 +31,7 @@ package eu.asterics.component.processor.datacollector;
 import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import eu.asterics.mw.data.ConversionUtils;
 import eu.asterics.mw.model.runtime.AbstractRuntimeComponentInstance;
 import eu.asterics.mw.model.runtime.IRuntimeInputPort;
@@ -74,9 +75,9 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	boolean waitForAll = false;
 
 	// Member variables
-	double ipIn1collector = 0; // Collects latest received value from port 1
-	boolean ipIn1ready = false; // True if value received from port 1 can be sent out
-	int count1 = 0; // Number of received discrete values from port 1
+	double ipIn1collector = 0;  // Collects latest received value from port 1
+	boolean ipIn1ready = false;  // True if value received from port 1 can be sent out
+	int count1 = 0;  // Number of received discrete values from port 1
 	double ipIn2collector = 0;
 	boolean ipIn2ready = false;
 	int count2 = 0;
@@ -96,6 +97,8 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	int latestY = -1;
 	int longestX = -1;
 	int longestY = -1;
+	HashMap<Integer, Double> maxVals = new HashMap<Integer, Double>();  // Max. values received on each port
+	HashMap<Integer, Double> minVals = new HashMap<Integer, Double>();  // Min. values received on each port
 
    /**
     * Class constructor.
@@ -350,7 +353,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
 			if (in > 0) {
-				ipIn1collector = applyOperator(ipIn1collector, ++count1, in, operator1);
+				ipIn1collector = applyOperator(ipIn1collector, ++count1, in, operator1, 1);
 				ipIn1ready = true;
 				sendOutputIfReady();
 			}
@@ -362,7 +365,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
 			if (in > 0) {
-				ipIn2collector = applyOperator(ipIn2collector, ++count2, in, operator2);
+				ipIn2collector = applyOperator(ipIn2collector, ++count2, in, operator2, 2);
 				ipIn2ready = true;
 				sendOutputIfReady();
 			}
@@ -374,7 +377,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
 			if (in > 0) {
-				ipIn3collector = applyOperator(ipIn3collector, ++count3, in, operator3);
+				ipIn3collector = applyOperator(ipIn3collector, ++count3, in, operator3, 3);
 				ipIn3ready = true;
 				sendOutputIfReady();
 			}
@@ -386,7 +389,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
 			if (in > 0) {
-				ipIn4collector = applyOperator(ipIn4collector, ++count4, in, operator4);
+				ipIn4collector = applyOperator(ipIn4collector, ++count4, in, operator4, 4);
 				ipIn4ready = true;
 				sendOutputIfReady();
 			}
@@ -398,7 +401,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		{
 			final double in = ConversionUtils.doubleFromBytes(data);
 			if (in > 0) {
-				ipIn5collector = applyOperator(ipIn5collector, ++count5, in, operator5);
+				ipIn5collector = applyOperator(ipIn5collector, ++count5, in, operator5, 5);
 				ipIn5ready = true;
 				sendOutputIfReady();
 			}
@@ -502,14 +505,26 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	 * Apply the given operator to the data received from a port
 	 * @return
 	 */
-	private double applyOperator(double in_prev, int count, double in, String op) {
-		double retVal = 0;
+	private double applyOperator(double in_prev, int count, double in, String op, int portNo) {
+		double retVal = 0.0;
 		if ("average".equalsIgnoreCase(op) || "avg".equalsIgnoreCase(op)) {
 			retVal = in_prev + ((in - in_prev) / count);  // Incremental average
 		} else if ("sum".equalsIgnoreCase(op)) {
 			retVal = in_prev + in;
 		} else if (op == null || op.isEmpty() || "none".equalsIgnoreCase(op) || "no".equalsIgnoreCase(op)) {
 			retVal = in;
+		} else if ("max".equalsIgnoreCase(op)) {
+			double max_prev = (double) (maxVals.containsKey(portNo) ? maxVals.get(portNo) : 0.0);
+			if (in > max_prev) {
+				retVal = in;
+				maxVals.put(portNo, in);
+			}
+		} else if ("min".equalsIgnoreCase(op)) {
+			double min_prev = (double) (minVals.containsKey(portNo) ? minVals.get(portNo) : 0.0);
+			if (in < in_prev) {
+				retVal = in;
+				minVals.put(portNo, in);
+			}
 		} else {
 			throw new IllegalArgumentException("Unknown operator!");
 		}
@@ -548,6 +563,8 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		longestX = -1;
 		longestY = -1;
 		longestFixation = -1;
+		maxVals.clear();
+		minVals.clear();
 	}
 
 	private String combineInputs() {
