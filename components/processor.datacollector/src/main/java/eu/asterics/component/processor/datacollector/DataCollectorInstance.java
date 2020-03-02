@@ -518,12 +518,16 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > max_prev) {
 				retVal = in;
 				maxVals.put(portNo, in);
+			} else {
+				retVal = max_prev;
 			}
 		} else if ("min".equalsIgnoreCase(op)) {
 			double min_prev = (double) (minVals.containsKey(portNo) ? minVals.get(portNo) : 0.0);
 			if (in < in_prev) {
 				retVal = in;
 				minVals.put(portNo, in);
+			} else {
+				retVal = min_prev;
 			}
 		} else {
 			throw new IllegalArgumentException("Unknown operator!");
