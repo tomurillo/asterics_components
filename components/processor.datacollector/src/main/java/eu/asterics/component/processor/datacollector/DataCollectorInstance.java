@@ -32,6 +32,7 @@ import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.LinkedList;
 import eu.asterics.mw.data.ConversionUtils;
 import eu.asterics.mw.model.runtime.AbstractRuntimeComponentInstance;
 import eu.asterics.mw.model.runtime.IRuntimeInputPort;
@@ -54,6 +55,7 @@ import eu.asterics.mw.services.AREServices;
 public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 {
 
+	public static final int DEFAULT_BATCH_SIZE = 5;
 	public static final int DEFAULT_DELAY = 1000;  // Default delay of 1 second
 
 	final IRuntimeOutputPort opOut = new DefaultRuntimeOutputPort();
@@ -71,12 +73,13 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	String operator4 = "operator4";
 	String propKey5 = "key5";
 	String operator5 = "operator5";
-	int outputDelay = DEFAULT_DELAY;
+	int sampleDelay = DEFAULT_DELAY;
+	int batchSize = DEFAULT_BATCH_SIZE;
 	boolean waitForAll = false;
 
 	// Member variables
 	double ipIn1collector = 0;  // Collects latest received value from port 1
-	boolean ipIn1ready = false;  // True if value received from port 1 can be sent out
+	boolean ipIn1ready = false;  // True if value received from port 1 can be sent out (is meaningful)
 	int count1 = 0;  // Number of received discrete values from port 1
 	double ipIn2collector = 0;
 	boolean ipIn2ready = false;
@@ -90,7 +93,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	double ipIn5collector = 0;
 	boolean ipIn5ready = false;
 	int count5 = 0;
-	boolean allReady = false; // All ports have already received at least one value; collectors have useful data
+	boolean allReady = false;  // Everything is ready for one sample to be generated
 	long startTime = 0L;
 	double longestFixation = -1.0;
 	int latestX = -1;
@@ -99,6 +102,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	int longestY = -1;
 	HashMap<Integer, Double> maxVals = new HashMap<Integer, Double>();  // Max. values received on each port
 	HashMap<Integer, Double> minVals = new HashMap<Integer, Double>();  // Min. values received on each port
+	LinkedList<String> samples = new LinkedList<String>();  // Queue of samples to be sent out in a single batch
 
    /**
     * Class constructor.
@@ -197,8 +201,12 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
      */
     public Object getRuntimePropertyValue(String propertyName)
     {
-		if ("outputDelay".equalsIgnoreCase(propertyName)) {
-			return outputDelay;
+		if ("sampleDelay".equalsIgnoreCase(propertyName)) {
+			return sampleDelay;
+		}
+		else if ("batchSize".equalsIgnoreCase(propertyName))
+		{
+			return batchSize;
 		}
 		else if ("activePorts".equalsIgnoreCase(propertyName))
 		{
@@ -258,9 +266,15 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
      */
     public Object setRuntimePropertyValue(String propertyName, Object newValue)
     {
-		if ("outputDelay".equalsIgnoreCase(propertyName)) {
-			final Integer oldValue = outputDelay;
-			outputDelay = Integer.parseInt(newValue.toString());
+		if ("sampleDelay".equalsIgnoreCase(propertyName)) {
+			final Integer oldValue = sampleDelay;
+			sampleDelay = Integer.parseInt(newValue.toString());
+			return oldValue;
+		}
+		else if ("batchSize".equalsIgnoreCase(propertyName))
+		{
+			final Integer oldValue = batchSize;
+			batchSize = Integer.parseInt(newValue.toString());
 			return oldValue;
 		}
 		else if ("activePorts".equalsIgnoreCase(propertyName))
@@ -355,7 +369,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn1collector = applyOperator(ipIn1collector, ++count1, in, operator1, 1);
 				ipIn1ready = true;
-				sendOutputIfReady();
+				createSampleIfReady();
 			}
 		}
 	};
@@ -367,7 +381,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn2collector = applyOperator(ipIn2collector, ++count2, in, operator2, 2);
 				ipIn2ready = true;
-				sendOutputIfReady();
+				createSampleIfReady();
 			}
 		}
 	};
@@ -379,7 +393,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn3collector = applyOperator(ipIn3collector, ++count3, in, operator3, 3);
 				ipIn3ready = true;
-				sendOutputIfReady();
+				createSampleIfReady();
 			}
 		}
 	};
@@ -391,7 +405,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn4collector = applyOperator(ipIn4collector, ++count4, in, operator4, 4);
 				ipIn4ready = true;
-				sendOutputIfReady();
+				createSampleIfReady();
 			}
 		}
 	};
@@ -403,7 +417,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (in > 0) {
 				ipIn5collector = applyOperator(ipIn5collector, ++count5, in, operator5, 5);
 				ipIn5ready = true;
-				sendOutputIfReady();
+				createSampleIfReady();
 			}
 		}
 	};
@@ -442,18 +456,31 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	 */
 
 
-	private void sendOutputIfReady() {
+	/**
+	 * Creates a new sample if enough values have been received through the input ports. Also outputs a batch when all
+	 * samples have been created.
+	 */
+	private void createSampleIfReady() {
 		if (allReady()) {
 			startTime = System.currentTimeMillis();
-			etpdataCollected.raiseEvent();
-			opOut.sendData(ConversionUtils.stringToBytes(combineInputs(startTime)));
+			String sample = combineInputs(startTime);
+			samples.add(sample);
 			resetBuffers();
+			if (samples.size() >= batchSize) {
+				sendBatch();
+			}
 		}
+	}
+
+	private void sendBatch() {
+		opOut.sendData(ConversionUtils.stringToBytes(combineSamples()));
+		etpdataCollected.raiseEvent();
+		samples.clear();
 	}
 
 	/**
 	 * Returns whether all input ports are ready i.e. every port has already received at least one value
-	 * and whether enough time has passed for data to be sent out
+	 * and whether enough time has passed for one sample to be collected
 	 * @return
 	 */
 	private boolean allReady() {
@@ -492,9 +519,9 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			}
 		}
 		allReady = ready;
-		if (allReady && this.outputDelay > 0) {
+		if (allReady && this.sampleDelay > 0) {
 			long endTime = System.currentTimeMillis();
-			if (endTime - this.startTime < this.outputDelay) {
+			if (endTime - this.startTime < this.sampleDelay) {
 				allReady = false;
 			}
 		}
@@ -647,7 +674,21 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		// AstericsErrorHandling.instance.getLogger().info("Output: " + retString);
 		return retString;
 	}
-	
+
+	private String combineSamples() {
+		String retString = "{\"samples\":[";
+		boolean first = true;
+		for (String sample : this.samples) {
+			if (!first) {
+				retString = retString.concat(",");
+			} else {
+				first = false;
+			}
+			retString = retString.concat(sample);
+		}
+		retString = retString.concat("]}");
+		return retString;
+	}
 
      /**
       * called when model is started.
@@ -665,7 +706,8 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
       @Override
       public void pause()
       {
-		  this.resetPortFlags();
+		  this.resetPortFlags(true);
+		  samples.clear();
           super.pause();
       }
 
@@ -686,6 +728,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
       public void stop()
       {
 		  this.resetPortFlags(true);
+		  samples.clear();
           super.stop();
       }
 }

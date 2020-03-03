@@ -62,10 +62,14 @@
 			</eventTriggererPort>
 		</events>
         <properties>
-			<property name="outputDelay"
+			<property name="batchSize"
+					  type="integer"
+					  value="5"
+					  description="Batch size (number of samples to send out at once)"/>
+			<property name="sampleDelay"
 					  type="integer"
 					  value="1000"
-					  description="Delay, in milliseconds, between output JSON objects. 0 to send immediately"/>
+					  description="Delay, in milliseconds, between collection of output samples. 0 to append a new sample immediately as soon as one input is received from any port"/>
 			<property name="activePorts"
 				type="integer"
 				value="1"
