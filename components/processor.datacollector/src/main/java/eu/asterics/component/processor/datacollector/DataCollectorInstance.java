@@ -31,7 +31,11 @@ package eu.asterics.component.processor.datacollector;
 import java.util.logging.Logger;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
+import java.lang.Math;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.*;
 import java.util.LinkedList;
 import eu.asterics.mw.data.ConversionUtils;
 import eu.asterics.mw.model.runtime.AbstractRuntimeComponentInstance;
@@ -102,6 +106,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 	int longestY = -1;
 	HashMap<Integer, Double> maxVals = new HashMap<Integer, Double>();  // Max. values received on each port
 	HashMap<Integer, Double> minVals = new HashMap<Integer, Double>();  // Min. values received on each port
+    Map<Integer, Collection<Double>> sequences = new HashMap<Integer, Collection<Double>>();  // Sequences of a sample
 	LinkedList<String> samples = new LinkedList<String>();  // Queue of samples to be sent out in a single batch
 
    /**
@@ -556,11 +561,81 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			} else {
 				retVal = min_prev;
 			}
+		} else if ("mode".equalsIgnoreCase(op)) {
 		} else {
 			throw new IllegalArgumentException("Unknown operator!");
 		}
+        appendToSequence(in, portNo);
 		return retVal;
 	}
+
+	private void appendToSequence(double in, int portNo) {
+        Collection<Double> seq = sequences.get(portNo);
+        if (seq == null) {
+            seq = new LinkedList<Double>();
+            sequences.put(portNo, seq);
+        }
+        seq.add(in);
+    }
+
+    private double getMode(int portNo) {
+	    return getMode(portNo, 0.01);
+    }
+
+    private double getMode(int portNo, double tol) {
+        double mode = 0.0;
+        Collection<Double> seq = sequences.get(portNo);
+        if (seq != null) {
+            HashMap<Integer, Integer> countMap = new HashMap<Integer, Integer>();
+            for (double s: seq) {
+                int s_int = (int) (Math.round(s / tol));
+                Integer count = countMap.get(s_int);
+                countMap.put(s_int, count == null ? 1 : count + 1);
+            }
+            Entry<Integer, Integer> max = null;
+            for (Entry<Integer, Integer> e: countMap.entrySet()) {
+                if (max == null || e.getValue() > max.getValue()) {
+                    max = e;
+                }
+            }
+            mode = ((double) max.getKey()) * tol;
+        }
+        return mode;
+    }
+
+    private double collectorOutput(int portNo) {
+	    double out = 0.0;
+	    double collector = 0.0;
+	    String op = "";
+        switch (portNo) {
+            case 1:
+                collector = ipIn1collector;
+                op = operator1;
+                break;
+            case 2:
+                collector = ipIn2collector;
+                op = operator2;
+                break;
+            case 3:
+                collector = ipIn3collector;
+                op = operator3;
+                break;
+            case 4:
+                collector = ipIn4collector;
+                op = operator4;
+                break;
+            case 5:
+                collector = ipIn5collector;
+                op = operator5;
+                break;
+        }
+        if ("mode".equalsIgnoreCase(op)) {
+            out = getMode(portNo);
+        } else {
+            out = collector;
+        }
+        return out;
+    }
 
 	private void resetPortFlags() {
 		this.resetPortFlags(false);
@@ -596,6 +671,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		longestFixation = -1;
 		maxVals.clear();
 		minVals.clear();
+		sequences.clear();
 	}
 
 	private String combineInputs() {
@@ -628,7 +704,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 		if (!waitForAll && !ipIn1ready) {
 			retString = retString.concat("\"no_data\"");
 		} else {
-			retString = retString.concat(String.format("%f", ipIn1collector));
+			retString = retString.concat(String.format("%f", collectorOutput(1)));
 		}
 		if (propActivePorts > 1) {
 			retString = retString.concat(",\"");
@@ -637,7 +713,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 			if (!waitForAll && !ipIn2ready) {
 				retString = retString.concat("\"no_data\"");
 			} else {
-				retString = retString.concat(String.format("%f", ipIn2collector));
+				retString = retString.concat(String.format("%f", collectorOutput(2)));
 			}
 			if (propActivePorts > 2) {
 				retString = retString.concat(",\"");
@@ -646,7 +722,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 				if (!waitForAll && !ipIn3ready) {
 					retString = retString.concat("\"no_data\"");
 				} else {
-					retString = retString.concat(String.format("%f", ipIn3collector));
+					retString = retString.concat(String.format("%f", collectorOutput(3)));
 				}
 				if (propActivePorts > 3) {
 					retString = retString.concat(",\"");
@@ -655,7 +731,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 					if (!waitForAll && !ipIn4ready) {
 						retString = retString.concat("\"no_data\"");
 					} else {
-						retString = retString.concat(String.format("%f", ipIn4collector));
+						retString = retString.concat(String.format("%f", collectorOutput(4)));
 					}
 					if (propActivePorts > 4) {
 						retString = retString.concat(",\"");
@@ -664,7 +740,7 @@ public class DataCollectorInstance extends AbstractRuntimeComponentInstance
 						if (!waitForAll && !ipIn5ready) {
 							retString = retString.concat("\"no_data\"");
 						} else {
-							retString = retString.concat(String.format("%f", ipIn5collector));
+							retString = retString.concat(String.format("%f", collectorOutput(5)));
 						}
 					}
 				}
